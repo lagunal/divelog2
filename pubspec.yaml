@@ -1,0 +1,22 @@
+name: divelog2
+description: "A mobile app for divers to log their dive sessions."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.10.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  go_router: ^17.0.1
+  google_fonts: ^6.3.3
+  provider: ^6.1.5+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
