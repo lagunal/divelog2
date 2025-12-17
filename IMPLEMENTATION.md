@@ -6,7 +6,11 @@ After completing a task, if any TODOs were added to the code or if anything was 
 
 ## Journal
 
-*(This section will be updated after each phase with a log of actions taken, things learned, surprises, and deviations from the plan.)*
+### Phase 1: Project Initialization and Setup
+
+*   **Learnings:** The `create_project --empty` command does not create a `test` directory or `widget_test.dart` by default, which means no test files needed explicit removal. The initial app launch timed out, requiring a cold boot of the emulator. Also, the emulator device ID changed after cold boot (from `emulator-5556` to `emulator-5554`), requiring manual connection to the DTD URI.
+*   **Surprises:** The `create_project --empty` behavior regarding the `test` directory. Emulator device ID change.
+*   **Deviations:** None from the overall plan.
 
 ---
 
@@ -14,15 +18,15 @@ After completing a task, if any TODOs were added to the code or if anything was 
 
 In this phase, we will create the foundational Flutter project, configure it, and commit the initial version.
 
-*   [ ] Create a new empty Flutter package named `dive_log` in the current directory.
-*   [ ] Remove the default boilerplate code and comments from `lib/main.dart`.
-*   [ ] Remove the boilerplate `test/widget_test.dart` file.
-*   [ ] Update the `description` in `pubspec.yaml` to "A mobile app for divers to log their dive sessions." and set the `version` to `0.1.0`.
-*   [ ] Create a placeholder `README.md` with a short description of the package.
-*   [ ] Create `CHANGELOG.md` with an initial entry for version `0.1.0`.
-*   [ ] Add necessary dependencies for the project foundation (`go_router`, `provider`, `google_fonts`).
-*   [ ] Commit this initial empty version of the package to the `main` branch.
-*   [ ] After committing, prompt the user for their preferred device and launch the app using the `launch_app` tool.
+*   [x] Create a new empty Flutter package named `dive_log` in the current directory.
+*   [x] Remove the default boilerplate code and comments from `lib/main.dart`.
+*   [x] Remove the boilerplate `test/widget_test.dart` file. (Confirmed not present)
+*   [x] Update the `description` in `pubspec.yaml` to "A mobile app for divers to log their dive sessions." and set the `version` to `0.1.0`.
+*   [x] Create a placeholder `README.md` with a short description of the package.
+*   [x] Create `CHANGELOG.md` with an initial entry for version `0.1.0`.
+*   [x] Add necessary dependencies for the project foundation (`go_router`, `provider`, `google_fonts`).
+*   [x] Commit this initial empty version of the package to the `main` branch.
+*   [x] After committing, prompt the user for their preferred device and launch the app using the `launch_app` tool.
 
 ---
 
@@ -82,7 +86,6 @@ This phase focuses on showing the user their logged dives.
 *   [ ] Replace the `DivesScreen` placeholder with a `ListView.builder` that displays the list of dives.
 *   [ ] Create a custom `DiveSessionCard` widget to display summary information for each dive in the list.
 *   [ ] Implement navigation from a `DiveSessionCard` to a `DiveDetailScreen`.
-*   [ ] Create the `DiveDetailScreen` to show all information for a selected dive session in a read-only format.
 *   [ ] Add an "Edit" button to the `DiveDetailScreen`'s `AppBar` that navigates to the `DiveFormScreen` with the selected dive's data pre-filled.
 
 ---

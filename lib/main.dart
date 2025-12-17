@@ -11,12 +11,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Dive Log'),
-        ),
-        body: const Center(
-          child: Text(''),
-        ),
+        appBar: AppBar(title: const Text('Dive Log')),
+        body: const Center(child: Text('')),
       ),
     );
   }
