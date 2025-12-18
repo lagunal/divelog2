@@ -94,16 +94,16 @@ This phase focuses on showing the user their logged dives.
 
 After **each** phase, the following steps must be completed:
 
-*   [ ] Create or modify unit/widget tests for the code added or changed in this phase.
-*   [ ] Run `dart_fix --apply` to clean up the code.
-*   [ ] Run the `analyze_files` tool and fix any reported issues.
-*   [ ] Run all tests to ensure they pass and that there are no regressions.
-*   [ ] Run `dart format .` to ensure formatting is correct.
-*   [ ] Re-read `IMPLEMENTATION.md` to check for any changes or new tasks.
-*   [ ] Update the `Journal` section in `IMPLEMENTATION.md` with learnings, surprises, or deviations. Check off completed tasks in the current phase.
-*   [ ] Use `git diff` to verify the changes, create a suitable commit message, and present it to the user for approval.
-*   [ ] **Wait for user approval before committing the changes and moving to the next phase.**
-*   [ ] After committing, if the app is running, use `hot_reload` or `hot_restart`.
+*   [x] Create or modify unit/widget tests for the code added or changed in this phase.
+*   [x] Run `dart_fix --apply` to clean up the code.
+*   [x] Run the `analyze_files` tool and fix any reported issues.
+*   [x] Run all tests to ensure they pass and that there are no regressions.
+*   [x] Run `dart format .` to ensure formatting is correct.
+*   [x] Re-read `IMPLEMENTATION.md` to check for any changes or new tasks.
+*   [x] Update the `Journal` section in `IMPLEMENTATION.md` with learnings, surprises, or deviations. Check off completed tasks in the current phase.
+*   [x] Use `git diff` to verify the changes, create a suitable commit message, and present it to the user for approval.
+*   [x] **Wait for user approval before committing the changes and moving to the next phase.**
+*   [x] After committing, if the app is running, use `hot_reload` or `hot_restart`.
 
 ---
 
