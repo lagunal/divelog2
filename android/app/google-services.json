@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "351967789232",
+    "project_id": "divelog2-ea9a6",
+    "storage_bucket": "divelog2-ea9a6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351967789232:android:861df84b44f66eaa4afb75",
+        "android_client_info": {
+          "package_name": "com.example.divelog2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtEnTk1zeiSnRSOr9wRi8xNeN0850mGLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

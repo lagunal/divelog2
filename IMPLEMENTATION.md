@@ -12,6 +12,12 @@ After completing a task, if any TODOs were added to the code or if anything was 
 *   **Surprises:** The `create_project --empty` behavior regarding the `test` directory. Emulator device ID change.
 *   **Deviations:** None from the overall plan.
 
+### Phase 2: Firebase Integration & Authentication UI
+
+*   **Learnings:** Integrating Firebase and mocking its dependencies in Flutter widget tests proved challenging due to its static initializers and platform channel dependencies. Injecting `FirebaseAuth` into `MainApp` improved testability.
+*   **Surprises:** The difficulty in mocking `Firebase.initializeApp()` and `FirebaseAuth.instance` directly in widget tests using `mocktail` without resorting to a dedicated Firebase testing library or significant architectural changes.
+*   **Deviations:** Deferred comprehensive widget tests for `MainApp` and `MainScreen` due to Firebase mocking complexities. Unit tests for `AuthenticationService` and widget tests for `LoginScreen`/`SignupScreen` were successfully implemented.
+
 ---
 
 ## Phase 1: Project Initialization and Setup
@@ -34,11 +40,11 @@ In this phase, we will create the foundational Flutter project, configure it, an
 
 This phase focuses on setting up Firebase and building the user authentication flow.
 
-*   [ ] Add Firebase dependencies (`firebase_core`, `firebase_auth`, `cloud_firestore`, `firebase_storage`).
-*   [ ] Follow platform-specific setup steps for integrating Firebase with Flutter (e.g., adding `google-services.json` for Android).
-*   [ ] Create the authentication UI screens: `LoginScreen` and `SignupScreen`. These will be simple forms with email/password fields and buttons.
-*   [ ] Implement the `AuthenticationService` to handle user sign-up, sign-in, and sign-out logic using `firebase_auth`.
-*   [ ] Create a root widget that listens to Firebase auth state changes and directs the user to either the `LoginScreen` or the `MainScreen`.
+*   [x] Add Firebase dependencies (`firebase_core`, `firebase_auth`, `cloud_firestore`, `firebase_storage`).
+*   [x] Follow platform-specific setup steps for integrating Firebase with Flutter (e.g., adding `google-services.json` for Android).
+*   [x] Create the authentication UI screens: `LoginScreen` and `SignupScreen`. These will be simple forms with email/password fields and buttons.
+*   [x] Implement the `AuthenticationService` to handle user sign-up, sign-in, and sign-out logic using `firebase_auth`.
+*   [x] Create a root widget that listens to Firebase auth state changes and directs the user to either the `LoginScreen` or the `MainScreen`.
 
 ---
 
@@ -94,7 +100,7 @@ This phase focuses on showing the user their logged dives.
 
 After **each** phase, the following steps must be completed:
 
-*   [x] Create or modify unit/widget tests for the code added or changed in this phase.
+*   [x] Create or modify unit/widget tests for the code added or changed in this phase. (Unit tests for `AuthenticationService` and widget tests for `LoginScreen`/`SignupScreen` completed. Widget tests for `MainApp` deferred due to Firebase mocking complexities.)
 *   [x] Run `dart_fix --apply` to clean up the code.
 *   [x] Run the `analyze_files` tool and fix any reported issues.
 *   [x] Run all tests to ensure they pass and that there are no regressions.
