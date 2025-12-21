@@ -1,3 +1,4 @@
+import 'package:divelog2/src/features/authentication/authentication_service.dart';
 import 'package:divelog2/src/features/authentication/signup_screen.dart';
 import 'package:divelog2/src/features/main/dives_screen.dart';
 import 'package:divelog2/src/features/main/home_screen.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:divelog2/src/features/authentication/login_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 // This is a global function that can be overridden for testing
 Future<void> Function()? initializeFirebaseAndRunApp = () async {
@@ -79,7 +81,10 @@ class MainApp extends StatelessWidget {
       ],
     );
 
-    return MaterialApp.router(routerConfig: router);
+    return Provider<AuthenticationService>(
+      create: (_) => AuthenticationService(auth),
+      child: MaterialApp.router(routerConfig: router),
+    );
   }
 }
 
