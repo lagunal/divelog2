@@ -18,6 +18,12 @@ After completing a task, if any TODOs were added to the code or if anything was 
 *   **Surprises:** The difficulty in mocking `Firebase.initializeApp()` and `FirebaseAuth.instance` directly in widget tests using `mocktail` without resorting to a dedicated Firebase testing library or significant architectural changes.
 *   **Deviations:** Deferred comprehensive widget tests for `MainApp` and `MainScreen` due to Firebase mocking complexities. Unit tests for `AuthenticationService` and widget tests for `LoginScreen`/`SignupScreen` were successfully implemented.
 
+### Phase 3: Core App Structure and Navigation
+
+*   **Learnings:** Setting up `go_router` with `ShellRoute` provides a robust way to handle persistent bottom navigation bars. Using `refreshListenable` with the Firebase auth stream ensures seamless redirection upon login/logout.
+*   **Surprises:** None.
+*   **Deviations:** None.
+
 ---
 
 ## Phase 1: Project Initialization and Setup
@@ -52,11 +58,11 @@ This phase focuses on setting up Firebase and building the user authentication f
 
 This phase will build the main navigation shell of the application.
 
-*   [ ] Implement the main navigation using `go_router`. Define routes for `/login`, `/signup`, and `/`.
-*   [ ] Create a `MainScreen` widget that contains the `Scaffold` with the `BottomNavigationBar` and a `Drawer`.
-*   [ ] Create placeholder widgets for the four main tabs: `HomeScreen`, `DivesScreen`, `StatisticsScreen`, and `ProfileScreen`.
-*   [ ] Configure the `BottomNavigationBar` to switch between the four placeholder tab widgets.
-*   [ ] Implement the `FloatingActionButton` on the `HomeScreen` to navigate to the (not-yet-created) dive log form.
+*   [x] Implement the main navigation using `go_router`. Define routes for `/login`, `/signup`, and `/`.
+*   [x] Create a `MainScreen` widget that contains the `Scaffold` with the `BottomNavigationBar` and a `Drawer`.
+*   [x] Create placeholder widgets for the four main tabs: `HomeScreen`, `DivesScreen`, `StatisticsScreen`, and `ProfileScreen`.
+*   [x] Configure the `BottomNavigationBar` to switch between the four placeholder tab widgets.
+*   [x] Implement the `FloatingActionButton` on the `HomeScreen` to navigate to the (not-yet-created) dive log form.
 
 ---
 

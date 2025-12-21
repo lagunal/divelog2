@@ -1,8 +1,14 @@
+import 'package:divelog2/src/features/authentication/signup_screen.dart';
+import 'package:divelog2/src/features/main/dives_screen.dart';
+import 'package:divelog2/src/features/main/home_screen.dart';
+import 'package:divelog2/src/features/main/main_screen.dart';
+import 'package:divelog2/src/features/main/profile_screen.dart';
+import 'package:divelog2/src/features/main/statistics_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:divelog2/src/features/authentication/authentication_service.dart';
 import 'package:divelog2/src/features/authentication/login_screen.dart';
+import 'package:go_router/go_router.dart';
 
 // This is a global function that can be overridden for testing
 Future<void> Function()? initializeFirebaseAndRunApp = () async {
@@ -21,46 +27,68 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: StreamBuilder<User?>(
-        stream: AuthenticationService(
-          firebaseAuth ?? FirebaseAuth.instance,
-        ).authStateChanges,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator(); // Loading indicator
-          }
-          if (snapshot.hasData) {
-            return MainScreen(firebaseAuth: firebaseAuth); // User is logged in
-          }
-          return const LoginScreen(); // User is not logged in
-        },
-      ),
+    final auth = firebaseAuth ?? FirebaseAuth.instance;
+
+    final router = GoRouter(
+      initialLocation: '/',
+      redirect: (context, state) {
+        final isLoggedIn = auth.currentUser != null;
+        final isLoggingIn = state.uri.path == '/login';
+        final isSigningUp = state.uri.path == '/signup';
+
+        if (!isLoggedIn && !isLoggingIn && !isSigningUp) {
+          return '/login';
+        }
+
+        if (isLoggedIn && (isLoggingIn || isSigningUp)) {
+          return '/';
+        }
+
+        return null;
+      },
+      refreshListenable: StreamListenable(auth.authStateChanges()),
+      routes: [
+        GoRoute(
+          path: '/login',
+          builder: (context, state) => const LoginScreen(),
+        ),
+        GoRoute(
+          path: '/signup',
+          builder: (context, state) => const SignupScreen(),
+        ),
+        ShellRoute(
+          builder: (context, state, child) {
+            return MainScreen(child: child);
+          },
+          routes: [
+            GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+            GoRoute(
+              path: '/dives',
+              builder: (context, state) => const DivesScreen(),
+            ),
+            GoRoute(
+              path: '/statistics',
+              builder: (context, state) => const StatisticsScreen(),
+            ),
+            GoRoute(
+              path: '/profile',
+              builder: (context, state) => const ProfileScreen(),
+            ),
+          ],
+        ),
+      ],
     );
+
+    return MaterialApp.router(routerConfig: router);
   }
 }
 
-class MainScreen extends StatelessWidget {
-  final FirebaseAuth? firebaseAuth;
-  const MainScreen({super.key, this.firebaseAuth});
+/// A wrapper class to make a Stream listenable for GoRouter refreshListenable
+class StreamListenable extends ChangeNotifier {
+  final Stream stream;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dive Log'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await AuthenticationService(
-                firebaseAuth ?? FirebaseAuth.instance,
-              ).signOut();
-            },
-          ),
-        ],
-      ),
-      body: const Center(child: Text('Welcome to Dive Log!')),
-    );
+  StreamListenable(this.stream) {
+    notifyListeners();
+    stream.listen((event) => notifyListeners());
   }
 }
