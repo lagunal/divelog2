@@ -24,6 +24,12 @@ After completing a task, if any TODOs were added to the code or if anything was 
 *   **Surprises:** None.
 *   **Deviations:** None.
 
+### Phase 4: Local Database (Drift) and Data Models
+
+*   **Learnings:** The lint `unnecessary_underscores` flags `__` as redundant when `_` is already used, even if intended to signify multiple unused parameters.
+*   **Surprises:** Naming conflict with `isNotNull` between `drift` and `flutter_test` (via `matcher`). Resolved by hiding it in the import.
+*   **Deviations:** Modified `AppDatabase` to accept a `QueryExecutor` for better testability (dependency injection).
+
 ---
 
 ## Phase 1: Project Initialization and Setup
@@ -70,11 +76,11 @@ This phase will build the main navigation shell of the application.
 
 Here, we will set up the local database which is the core of our offline-first strategy.
 
-*   [ ] Add Drift dependencies (`drift`, `sqlite3_flutter_libs`, `path_provider`, `path`). Also add build-time dependencies (`drift_dev`, `build_runner`).
-*   [ ] Define the `DiveSessions` table in a new file, including all fields from the design document (client, operator, depth, time, etc., plus `firestoreId`, `syncStatus`, `updatedAt`).
-*   [ ] Create the `AppDatabase` class that uses the `DiveSessions` table.
-*   [ ] Implement a `DatabaseService` (or similar Data Access Object pattern) that provides simple methods for CRUD (Create, Read, Update, Delete) operations on the `DiveSessions` table.
-*   [ ] Run the `build_runner` to generate the necessary Drift code.
+*   [x] Add Drift dependencies (`drift`, `sqlite3_flutter_libs`, `path_provider`, `path`). Also add build-time dependencies (`drift_dev`, `build_runner`).
+*   [x] Define the `DiveSessions` table in a new file, including all fields from the design document (client, operator, depth, time, etc., plus `firestoreId`, `syncStatus`, `updatedAt`).
+*   [x] Create the `AppDatabase` class that uses the `DiveSessions` table.
+*   [x] Implement a `DatabaseService` (or similar Data Access Object pattern) that provides simple methods for CRUD (Create, Read, Update, Delete) operations on the `DiveSessions` table.
+*   [x] Run the `build_runner` to generate the necessary Drift code.
 
 ---
 
