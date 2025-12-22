@@ -33,9 +33,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
       try {
         await context.read<AuthenticationService>().signIn(
-              email: _emailController.text.trim(),
-              password: _passwordController.text.trim(),
-            );
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
         // Navigation is handled by GoRouter's redirect in main.dart
       } catch (e) {
         setState(() {

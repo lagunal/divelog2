@@ -33,9 +33,9 @@ class _SignupScreenState extends State<SignupScreen> {
 
       try {
         await context.read<AuthenticationService>().signUp(
-              email: _emailController.text.trim(),
-              password: _passwordController.text.trim(),
-            );
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
         // Navigation is handled by GoRouter's redirect in main.dart
       } catch (e) {
         setState(() {

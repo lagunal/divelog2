@@ -17,20 +17,23 @@ void main() {
   Widget createWidgetUnderTest() {
     return Provider<AuthenticationService>(
       create: (_) => mockAuthService,
-      child: const MaterialApp(
-        home: LoginScreen(),
-      ),
+      child: const MaterialApp(home: LoginScreen()),
     );
   }
 
   group('LoginScreen', () {
-    testWidgets('renders email and password fields', (WidgetTester tester) async {
+    testWidgets('renders email and password fields', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(createWidgetUnderTest());
 
       expect(find.byType(TextFormField), findsNWidgets(2));
       expect(find.text('Email'), findsOneWidget);
       expect(find.text('Password'), findsOneWidget);
-      expect(find.text('Login'), findsNWidgets(2)); // AppBar title and Button text
+      expect(
+        find.text('Login'),
+        findsNWidgets(2),
+      ); // AppBar title and Button text
     });
 
     testWidgets('calls signIn when form is valid and button is pressed', (
