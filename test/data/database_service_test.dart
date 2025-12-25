@@ -19,13 +19,17 @@ void main() {
     await db.close();
   });
 
-  test('createDiveSession inserts a session', () async {
+  test('createDiveSession inserts a session with new schema', () async {
     final entry = DiveSessionsCompanion(
       date: Value(DateTime.now()),
       location: const Value('Test Location'),
-      diveSite: const Value('Test Site'),
+      client: const Value('Test Client'),
+      diveOperator: const Value('Test Operator'),
       maxDepth: const Value(20.5),
       bottomTime: const Value(45),
+      diversNames: const Value('Diver 1, Diver 2'),
+      workDescription: const Value('Inspection work'),
+      accumulatedDiveTime: const Value(1200),
     );
 
     final id = await service.createDiveSession(entry);
@@ -34,6 +38,9 @@ void main() {
     final session = await service.getDiveSession(id);
     expect(session, isNotNull);
     expect(session!.location, 'Test Location');
+    expect(session.diversNames, 'Diver 1, Diver 2');
+    expect(session.workDescription, 'Inspection work');
+    expect(session.accumulatedDiveTime, 1200);
     expect(session.syncStatus, SyncStatus.pending); // Default value
   });
 
@@ -41,25 +48,19 @@ void main() {
     final date1 = DateTime.now().subtract(const Duration(days: 1));
     final date2 = DateTime.now();
 
-    await service.createDiveSession(
-      DiveSessionsCompanion(
-        date: Value(date1),
-        location: const Value('Loc 1'),
-        diveSite: const Value('Site 1'),
-        maxDepth: const Value(10),
-        bottomTime: const Value(30),
-      ),
-    );
+    await service.createDiveSession(DiveSessionsCompanion(
+      date: Value(date1),
+      location: const Value('Loc 1'),
+      maxDepth: const Value(10),
+      bottomTime: const Value(30),
+    ));
 
-    await service.createDiveSession(
-      DiveSessionsCompanion(
-        date: Value(date2),
-        location: const Value('Loc 2'),
-        diveSite: const Value('Site 2'),
-        maxDepth: const Value(20),
-        bottomTime: const Value(40),
-      ),
-    );
+    await service.createDiveSession(DiveSessionsCompanion(
+      date: Value(date2),
+      location: const Value('Loc 2'),
+      maxDepth: const Value(20),
+      bottomTime: const Value(40),
+    ));
 
     final sessions = await service.getAllDiveSessions();
     expect(sessions.length, 2);
@@ -68,15 +69,12 @@ void main() {
   });
 
   test('markAsSynced updates status and firestoreId', () async {
-    final id = await service.createDiveSession(
-      DiveSessionsCompanion(
-        date: Value(DateTime.now()),
-        location: const Value('Loc'),
-        diveSite: const Value('Site'),
-        maxDepth: const Value(10),
-        bottomTime: const Value(30),
-      ),
-    );
+    final id = await service.createDiveSession(DiveSessionsCompanion(
+      date: Value(DateTime.now()),
+      location: const Value('Loc'),
+      maxDepth: const Value(10),
+      bottomTime: const Value(30),
+    ));
 
     await service.markAsSynced(id, 'remote-123');
 

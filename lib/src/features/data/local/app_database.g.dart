@@ -76,17 +76,6 @@ class $DiveSessionsTable extends DiveSessions
     type: DriftSqlType.string,
     requiredDuringInsert: true,
   );
-  static const VerificationMeta _diveSiteMeta = const VerificationMeta(
-    'diveSite',
-  );
-  @override
-  late final GeneratedColumn<String> diveSite = GeneratedColumn<String>(
-    'dive_site',
-    aliasedName,
-    false,
-    type: DriftSqlType.string,
-    requiredDuringInsert: true,
-  );
   static const VerificationMeta _clientMeta = const VerificationMeta('client');
   @override
   late final GeneratedColumn<String> client = GeneratedColumn<String>(
@@ -107,6 +96,61 @@ class $DiveSessionsTable extends DiveSessions
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
+  static const VerificationMeta _operatorAddressMeta = const VerificationMeta(
+    'operatorAddress',
+  );
+  @override
+  late final GeneratedColumn<String> operatorAddress = GeneratedColumn<String>(
+    'operator_address',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _diveTypeMeta = const VerificationMeta(
+    'diveType',
+  );
+  @override
+  late final GeneratedColumn<String> diveType = GeneratedColumn<String>(
+    'dive_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _diversNamesMeta = const VerificationMeta(
+    'diversNames',
+  );
+  @override
+  late final GeneratedColumn<String> diversNames = GeneratedColumn<String>(
+    'divers_names',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _entryTimeMeta = const VerificationMeta(
+    'entryTime',
+  );
+  @override
+  late final GeneratedColumn<DateTime> entryTime = GeneratedColumn<DateTime>(
+    'entry_time',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _exitTimeMeta = const VerificationMeta(
+    'exitTime',
+  );
+  @override
+  late final GeneratedColumn<DateTime> exitTime = GeneratedColumn<DateTime>(
+    'exit_time',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _maxDepthMeta = const VerificationMeta(
     'maxDepth',
   );
@@ -117,6 +161,17 @@ class $DiveSessionsTable extends DiveSessions
     false,
     type: DriftSqlType.double,
     requiredDuringInsert: true,
+  );
+  static const VerificationMeta _surfaceIntervalMeta = const VerificationMeta(
+    'surfaceInterval',
+  );
+  @override
+  late final GeneratedColumn<int> surfaceInterval = GeneratedColumn<int>(
+    'surface_interval',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
   );
   static const VerificationMeta _bottomTimeMeta = const VerificationMeta(
     'bottomTime',
@@ -129,22 +184,114 @@ class $DiveSessionsTable extends DiveSessions
     type: DriftSqlType.int,
     requiredDuringInsert: true,
   );
-  static const VerificationMeta _buddyMeta = const VerificationMeta('buddy');
+  static const VerificationMeta _decompressionStartMeta =
+      const VerificationMeta('decompressionStart');
   @override
-  late final GeneratedColumn<String> buddy = GeneratedColumn<String>(
-    'buddy',
+  late final GeneratedColumn<DateTime> decompressionStart =
+      GeneratedColumn<DateTime>(
+        'decompression_start',
+        aliasedName,
+        true,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _decompressionCompleteMeta =
+      const VerificationMeta('decompressionComplete');
+  @override
+  late final GeneratedColumn<DateTime> decompressionComplete =
+      GeneratedColumn<DateTime>(
+        'decompression_complete',
+        aliasedName,
+        true,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _totalDiveTimeMeta = const VerificationMeta(
+    'totalDiveTime',
+  );
+  @override
+  late final GeneratedColumn<int> totalDiveTime = GeneratedColumn<int>(
+    'total_dive_time',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _gasMixtureMeta = const VerificationMeta(
+    'gasMixture',
+  );
+  @override
+  late final GeneratedColumn<String> gasMixture = GeneratedColumn<String>(
+    'gas_mixture',
     aliasedName,
     true,
     type: DriftSqlType.string,
     requiredDuringInsert: false,
   );
-  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  static const VerificationMeta _workDescriptionMeta = const VerificationMeta(
+    'workDescription',
+  );
   @override
-  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
-    'notes',
+  late final GeneratedColumn<String> workDescription = GeneratedColumn<String>(
+    'work_description',
     aliasedName,
     true,
     type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _decompressionUsedMeta = const VerificationMeta(
+    'decompressionUsed',
+  );
+  @override
+  late final GeneratedColumn<String> decompressionUsed =
+      GeneratedColumn<String>(
+        'decompression_used',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _illnessOrInjuryMeta = const VerificationMeta(
+    'illnessOrInjury',
+  );
+  @override
+  late final GeneratedColumn<String> illnessOrInjury = GeneratedColumn<String>(
+    'illness_or_injury',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _diveSupervisorMeta = const VerificationMeta(
+    'diveSupervisor',
+  );
+  @override
+  late final GeneratedColumn<String> diveSupervisor = GeneratedColumn<String>(
+    'dive_supervisor',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _accumulatedSupervisionTimeMeta =
+      const VerificationMeta('accumulatedSupervisionTime');
+  @override
+  late final GeneratedColumn<int> accumulatedSupervisionTime =
+      GeneratedColumn<int>(
+        'accumulated_supervision_time',
+        aliasedName,
+        true,
+        type: DriftSqlType.int,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _accumulatedDiveTimeMeta =
+      const VerificationMeta('accumulatedDiveTime');
+  @override
+  late final GeneratedColumn<int> accumulatedDiveTime = GeneratedColumn<int>(
+    'accumulated_dive_time',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
     requiredDuringInsert: false,
   );
   static const VerificationMeta _localPdfPathMeta = const VerificationMeta(
@@ -166,13 +313,26 @@ class $DiveSessionsTable extends DiveSessions
     updatedAt,
     date,
     location,
-    diveSite,
     client,
     diveOperator,
+    operatorAddress,
+    diveType,
+    diversNames,
+    entryTime,
+    exitTime,
     maxDepth,
+    surfaceInterval,
     bottomTime,
-    buddy,
-    notes,
+    decompressionStart,
+    decompressionComplete,
+    totalDiveTime,
+    gasMixture,
+    workDescription,
+    decompressionUsed,
+    illnessOrInjury,
+    diveSupervisor,
+    accumulatedSupervisionTime,
+    accumulatedDiveTime,
     localPdfPath,
   ];
   @override
@@ -221,14 +381,6 @@ class $DiveSessionsTable extends DiveSessions
     } else if (isInserting) {
       context.missing(_locationMeta);
     }
-    if (data.containsKey('dive_site')) {
-      context.handle(
-        _diveSiteMeta,
-        diveSite.isAcceptableOrUnknown(data['dive_site']!, _diveSiteMeta),
-      );
-    } else if (isInserting) {
-      context.missing(_diveSiteMeta);
-    }
     if (data.containsKey('client')) {
       context.handle(
         _clientMeta,
@@ -244,6 +396,42 @@ class $DiveSessionsTable extends DiveSessions
         ),
       );
     }
+    if (data.containsKey('operator_address')) {
+      context.handle(
+        _operatorAddressMeta,
+        operatorAddress.isAcceptableOrUnknown(
+          data['operator_address']!,
+          _operatorAddressMeta,
+        ),
+      );
+    }
+    if (data.containsKey('dive_type')) {
+      context.handle(
+        _diveTypeMeta,
+        diveType.isAcceptableOrUnknown(data['dive_type']!, _diveTypeMeta),
+      );
+    }
+    if (data.containsKey('divers_names')) {
+      context.handle(
+        _diversNamesMeta,
+        diversNames.isAcceptableOrUnknown(
+          data['divers_names']!,
+          _diversNamesMeta,
+        ),
+      );
+    }
+    if (data.containsKey('entry_time')) {
+      context.handle(
+        _entryTimeMeta,
+        entryTime.isAcceptableOrUnknown(data['entry_time']!, _entryTimeMeta),
+      );
+    }
+    if (data.containsKey('exit_time')) {
+      context.handle(
+        _exitTimeMeta,
+        exitTime.isAcceptableOrUnknown(data['exit_time']!, _exitTimeMeta),
+      );
+    }
     if (data.containsKey('max_depth')) {
       context.handle(
         _maxDepthMeta,
@@ -251,6 +439,15 @@ class $DiveSessionsTable extends DiveSessions
       );
     } else if (isInserting) {
       context.missing(_maxDepthMeta);
+    }
+    if (data.containsKey('surface_interval')) {
+      context.handle(
+        _surfaceIntervalMeta,
+        surfaceInterval.isAcceptableOrUnknown(
+          data['surface_interval']!,
+          _surfaceIntervalMeta,
+        ),
+      );
     }
     if (data.containsKey('bottom_time')) {
       context.handle(
@@ -260,16 +457,91 @@ class $DiveSessionsTable extends DiveSessions
     } else if (isInserting) {
       context.missing(_bottomTimeMeta);
     }
-    if (data.containsKey('buddy')) {
+    if (data.containsKey('decompression_start')) {
       context.handle(
-        _buddyMeta,
-        buddy.isAcceptableOrUnknown(data['buddy']!, _buddyMeta),
+        _decompressionStartMeta,
+        decompressionStart.isAcceptableOrUnknown(
+          data['decompression_start']!,
+          _decompressionStartMeta,
+        ),
       );
     }
-    if (data.containsKey('notes')) {
+    if (data.containsKey('decompression_complete')) {
       context.handle(
-        _notesMeta,
-        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+        _decompressionCompleteMeta,
+        decompressionComplete.isAcceptableOrUnknown(
+          data['decompression_complete']!,
+          _decompressionCompleteMeta,
+        ),
+      );
+    }
+    if (data.containsKey('total_dive_time')) {
+      context.handle(
+        _totalDiveTimeMeta,
+        totalDiveTime.isAcceptableOrUnknown(
+          data['total_dive_time']!,
+          _totalDiveTimeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('gas_mixture')) {
+      context.handle(
+        _gasMixtureMeta,
+        gasMixture.isAcceptableOrUnknown(data['gas_mixture']!, _gasMixtureMeta),
+      );
+    }
+    if (data.containsKey('work_description')) {
+      context.handle(
+        _workDescriptionMeta,
+        workDescription.isAcceptableOrUnknown(
+          data['work_description']!,
+          _workDescriptionMeta,
+        ),
+      );
+    }
+    if (data.containsKey('decompression_used')) {
+      context.handle(
+        _decompressionUsedMeta,
+        decompressionUsed.isAcceptableOrUnknown(
+          data['decompression_used']!,
+          _decompressionUsedMeta,
+        ),
+      );
+    }
+    if (data.containsKey('illness_or_injury')) {
+      context.handle(
+        _illnessOrInjuryMeta,
+        illnessOrInjury.isAcceptableOrUnknown(
+          data['illness_or_injury']!,
+          _illnessOrInjuryMeta,
+        ),
+      );
+    }
+    if (data.containsKey('dive_supervisor')) {
+      context.handle(
+        _diveSupervisorMeta,
+        diveSupervisor.isAcceptableOrUnknown(
+          data['dive_supervisor']!,
+          _diveSupervisorMeta,
+        ),
+      );
+    }
+    if (data.containsKey('accumulated_supervision_time')) {
+      context.handle(
+        _accumulatedSupervisionTimeMeta,
+        accumulatedSupervisionTime.isAcceptableOrUnknown(
+          data['accumulated_supervision_time']!,
+          _accumulatedSupervisionTimeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('accumulated_dive_time')) {
+      context.handle(
+        _accumulatedDiveTimeMeta,
+        accumulatedDiveTime.isAcceptableOrUnknown(
+          data['accumulated_dive_time']!,
+          _accumulatedDiveTimeMeta,
+        ),
       );
     }
     if (data.containsKey('local_pdf_path')) {
@@ -316,10 +588,6 @@ class $DiveSessionsTable extends DiveSessions
         DriftSqlType.string,
         data['${effectivePrefix}location'],
       )!,
-      diveSite: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}dive_site'],
-      )!,
       client: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}client'],
@@ -328,21 +596,77 @@ class $DiveSessionsTable extends DiveSessions
         DriftSqlType.string,
         data['${effectivePrefix}dive_operator'],
       ),
+      operatorAddress: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}operator_address'],
+      ),
+      diveType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}dive_type'],
+      ),
+      diversNames: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}divers_names'],
+      ),
+      entryTime: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}entry_time'],
+      ),
+      exitTime: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}exit_time'],
+      ),
       maxDepth: attachedDatabase.typeMapping.read(
         DriftSqlType.double,
         data['${effectivePrefix}max_depth'],
       )!,
+      surfaceInterval: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}surface_interval'],
+      ),
       bottomTime: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}bottom_time'],
       )!,
-      buddy: attachedDatabase.typeMapping.read(
-        DriftSqlType.string,
-        data['${effectivePrefix}buddy'],
+      decompressionStart: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}decompression_start'],
       ),
-      notes: attachedDatabase.typeMapping.read(
+      decompressionComplete: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}decompression_complete'],
+      ),
+      totalDiveTime: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}total_dive_time'],
+      ),
+      gasMixture: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
-        data['${effectivePrefix}notes'],
+        data['${effectivePrefix}gas_mixture'],
+      ),
+      workDescription: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}work_description'],
+      ),
+      decompressionUsed: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}decompression_used'],
+      ),
+      illnessOrInjury: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}illness_or_injury'],
+      ),
+      diveSupervisor: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}dive_supervisor'],
+      ),
+      accumulatedSupervisionTime: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}accumulated_supervision_time'],
+      ),
+      accumulatedDiveTime: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}accumulated_dive_time'],
       ),
       localPdfPath: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
@@ -367,13 +691,26 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
   final DateTime updatedAt;
   final DateTime date;
   final String location;
-  final String diveSite;
   final String? client;
   final String? diveOperator;
+  final String? operatorAddress;
+  final String? diveType;
+  final String? diversNames;
+  final DateTime? entryTime;
+  final DateTime? exitTime;
   final double maxDepth;
+  final int? surfaceInterval;
   final int bottomTime;
-  final String? buddy;
-  final String? notes;
+  final DateTime? decompressionStart;
+  final DateTime? decompressionComplete;
+  final int? totalDiveTime;
+  final String? gasMixture;
+  final String? workDescription;
+  final String? decompressionUsed;
+  final String? illnessOrInjury;
+  final String? diveSupervisor;
+  final int? accumulatedSupervisionTime;
+  final int? accumulatedDiveTime;
   final String? localPdfPath;
   const DiveSession({
     required this.id,
@@ -382,13 +719,26 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
     required this.updatedAt,
     required this.date,
     required this.location,
-    required this.diveSite,
     this.client,
     this.diveOperator,
+    this.operatorAddress,
+    this.diveType,
+    this.diversNames,
+    this.entryTime,
+    this.exitTime,
     required this.maxDepth,
+    this.surfaceInterval,
     required this.bottomTime,
-    this.buddy,
-    this.notes,
+    this.decompressionStart,
+    this.decompressionComplete,
+    this.totalDiveTime,
+    this.gasMixture,
+    this.workDescription,
+    this.decompressionUsed,
+    this.illnessOrInjury,
+    this.diveSupervisor,
+    this.accumulatedSupervisionTime,
+    this.accumulatedDiveTime,
     this.localPdfPath,
   });
   @override
@@ -406,20 +756,63 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
     map['updated_at'] = Variable<DateTime>(updatedAt);
     map['date'] = Variable<DateTime>(date);
     map['location'] = Variable<String>(location);
-    map['dive_site'] = Variable<String>(diveSite);
     if (!nullToAbsent || client != null) {
       map['client'] = Variable<String>(client);
     }
     if (!nullToAbsent || diveOperator != null) {
       map['dive_operator'] = Variable<String>(diveOperator);
     }
-    map['max_depth'] = Variable<double>(maxDepth);
-    map['bottom_time'] = Variable<int>(bottomTime);
-    if (!nullToAbsent || buddy != null) {
-      map['buddy'] = Variable<String>(buddy);
+    if (!nullToAbsent || operatorAddress != null) {
+      map['operator_address'] = Variable<String>(operatorAddress);
     }
-    if (!nullToAbsent || notes != null) {
-      map['notes'] = Variable<String>(notes);
+    if (!nullToAbsent || diveType != null) {
+      map['dive_type'] = Variable<String>(diveType);
+    }
+    if (!nullToAbsent || diversNames != null) {
+      map['divers_names'] = Variable<String>(diversNames);
+    }
+    if (!nullToAbsent || entryTime != null) {
+      map['entry_time'] = Variable<DateTime>(entryTime);
+    }
+    if (!nullToAbsent || exitTime != null) {
+      map['exit_time'] = Variable<DateTime>(exitTime);
+    }
+    map['max_depth'] = Variable<double>(maxDepth);
+    if (!nullToAbsent || surfaceInterval != null) {
+      map['surface_interval'] = Variable<int>(surfaceInterval);
+    }
+    map['bottom_time'] = Variable<int>(bottomTime);
+    if (!nullToAbsent || decompressionStart != null) {
+      map['decompression_start'] = Variable<DateTime>(decompressionStart);
+    }
+    if (!nullToAbsent || decompressionComplete != null) {
+      map['decompression_complete'] = Variable<DateTime>(decompressionComplete);
+    }
+    if (!nullToAbsent || totalDiveTime != null) {
+      map['total_dive_time'] = Variable<int>(totalDiveTime);
+    }
+    if (!nullToAbsent || gasMixture != null) {
+      map['gas_mixture'] = Variable<String>(gasMixture);
+    }
+    if (!nullToAbsent || workDescription != null) {
+      map['work_description'] = Variable<String>(workDescription);
+    }
+    if (!nullToAbsent || decompressionUsed != null) {
+      map['decompression_used'] = Variable<String>(decompressionUsed);
+    }
+    if (!nullToAbsent || illnessOrInjury != null) {
+      map['illness_or_injury'] = Variable<String>(illnessOrInjury);
+    }
+    if (!nullToAbsent || diveSupervisor != null) {
+      map['dive_supervisor'] = Variable<String>(diveSupervisor);
+    }
+    if (!nullToAbsent || accumulatedSupervisionTime != null) {
+      map['accumulated_supervision_time'] = Variable<int>(
+        accumulatedSupervisionTime,
+      );
+    }
+    if (!nullToAbsent || accumulatedDiveTime != null) {
+      map['accumulated_dive_time'] = Variable<int>(accumulatedDiveTime);
     }
     if (!nullToAbsent || localPdfPath != null) {
       map['local_pdf_path'] = Variable<String>(localPdfPath);
@@ -437,21 +830,63 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
       updatedAt: Value(updatedAt),
       date: Value(date),
       location: Value(location),
-      diveSite: Value(diveSite),
       client: client == null && nullToAbsent
           ? const Value.absent()
           : Value(client),
       diveOperator: diveOperator == null && nullToAbsent
           ? const Value.absent()
           : Value(diveOperator),
+      operatorAddress: operatorAddress == null && nullToAbsent
+          ? const Value.absent()
+          : Value(operatorAddress),
+      diveType: diveType == null && nullToAbsent
+          ? const Value.absent()
+          : Value(diveType),
+      diversNames: diversNames == null && nullToAbsent
+          ? const Value.absent()
+          : Value(diversNames),
+      entryTime: entryTime == null && nullToAbsent
+          ? const Value.absent()
+          : Value(entryTime),
+      exitTime: exitTime == null && nullToAbsent
+          ? const Value.absent()
+          : Value(exitTime),
       maxDepth: Value(maxDepth),
+      surfaceInterval: surfaceInterval == null && nullToAbsent
+          ? const Value.absent()
+          : Value(surfaceInterval),
       bottomTime: Value(bottomTime),
-      buddy: buddy == null && nullToAbsent
+      decompressionStart: decompressionStart == null && nullToAbsent
           ? const Value.absent()
-          : Value(buddy),
-      notes: notes == null && nullToAbsent
+          : Value(decompressionStart),
+      decompressionComplete: decompressionComplete == null && nullToAbsent
           ? const Value.absent()
-          : Value(notes),
+          : Value(decompressionComplete),
+      totalDiveTime: totalDiveTime == null && nullToAbsent
+          ? const Value.absent()
+          : Value(totalDiveTime),
+      gasMixture: gasMixture == null && nullToAbsent
+          ? const Value.absent()
+          : Value(gasMixture),
+      workDescription: workDescription == null && nullToAbsent
+          ? const Value.absent()
+          : Value(workDescription),
+      decompressionUsed: decompressionUsed == null && nullToAbsent
+          ? const Value.absent()
+          : Value(decompressionUsed),
+      illnessOrInjury: illnessOrInjury == null && nullToAbsent
+          ? const Value.absent()
+          : Value(illnessOrInjury),
+      diveSupervisor: diveSupervisor == null && nullToAbsent
+          ? const Value.absent()
+          : Value(diveSupervisor),
+      accumulatedSupervisionTime:
+          accumulatedSupervisionTime == null && nullToAbsent
+          ? const Value.absent()
+          : Value(accumulatedSupervisionTime),
+      accumulatedDiveTime: accumulatedDiveTime == null && nullToAbsent
+          ? const Value.absent()
+          : Value(accumulatedDiveTime),
       localPdfPath: localPdfPath == null && nullToAbsent
           ? const Value.absent()
           : Value(localPdfPath),
@@ -470,13 +905,36 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
       updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
       date: serializer.fromJson<DateTime>(json['date']),
       location: serializer.fromJson<String>(json['location']),
-      diveSite: serializer.fromJson<String>(json['diveSite']),
       client: serializer.fromJson<String?>(json['client']),
       diveOperator: serializer.fromJson<String?>(json['diveOperator']),
+      operatorAddress: serializer.fromJson<String?>(json['operatorAddress']),
+      diveType: serializer.fromJson<String?>(json['diveType']),
+      diversNames: serializer.fromJson<String?>(json['diversNames']),
+      entryTime: serializer.fromJson<DateTime?>(json['entryTime']),
+      exitTime: serializer.fromJson<DateTime?>(json['exitTime']),
       maxDepth: serializer.fromJson<double>(json['maxDepth']),
+      surfaceInterval: serializer.fromJson<int?>(json['surfaceInterval']),
       bottomTime: serializer.fromJson<int>(json['bottomTime']),
-      buddy: serializer.fromJson<String?>(json['buddy']),
-      notes: serializer.fromJson<String?>(json['notes']),
+      decompressionStart: serializer.fromJson<DateTime?>(
+        json['decompressionStart'],
+      ),
+      decompressionComplete: serializer.fromJson<DateTime?>(
+        json['decompressionComplete'],
+      ),
+      totalDiveTime: serializer.fromJson<int?>(json['totalDiveTime']),
+      gasMixture: serializer.fromJson<String?>(json['gasMixture']),
+      workDescription: serializer.fromJson<String?>(json['workDescription']),
+      decompressionUsed: serializer.fromJson<String?>(
+        json['decompressionUsed'],
+      ),
+      illnessOrInjury: serializer.fromJson<String?>(json['illnessOrInjury']),
+      diveSupervisor: serializer.fromJson<String?>(json['diveSupervisor']),
+      accumulatedSupervisionTime: serializer.fromJson<int?>(
+        json['accumulatedSupervisionTime'],
+      ),
+      accumulatedDiveTime: serializer.fromJson<int?>(
+        json['accumulatedDiveTime'],
+      ),
       localPdfPath: serializer.fromJson<String?>(json['localPdfPath']),
     );
   }
@@ -490,13 +948,30 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
       'updatedAt': serializer.toJson<DateTime>(updatedAt),
       'date': serializer.toJson<DateTime>(date),
       'location': serializer.toJson<String>(location),
-      'diveSite': serializer.toJson<String>(diveSite),
       'client': serializer.toJson<String?>(client),
       'diveOperator': serializer.toJson<String?>(diveOperator),
+      'operatorAddress': serializer.toJson<String?>(operatorAddress),
+      'diveType': serializer.toJson<String?>(diveType),
+      'diversNames': serializer.toJson<String?>(diversNames),
+      'entryTime': serializer.toJson<DateTime?>(entryTime),
+      'exitTime': serializer.toJson<DateTime?>(exitTime),
       'maxDepth': serializer.toJson<double>(maxDepth),
+      'surfaceInterval': serializer.toJson<int?>(surfaceInterval),
       'bottomTime': serializer.toJson<int>(bottomTime),
-      'buddy': serializer.toJson<String?>(buddy),
-      'notes': serializer.toJson<String?>(notes),
+      'decompressionStart': serializer.toJson<DateTime?>(decompressionStart),
+      'decompressionComplete': serializer.toJson<DateTime?>(
+        decompressionComplete,
+      ),
+      'totalDiveTime': serializer.toJson<int?>(totalDiveTime),
+      'gasMixture': serializer.toJson<String?>(gasMixture),
+      'workDescription': serializer.toJson<String?>(workDescription),
+      'decompressionUsed': serializer.toJson<String?>(decompressionUsed),
+      'illnessOrInjury': serializer.toJson<String?>(illnessOrInjury),
+      'diveSupervisor': serializer.toJson<String?>(diveSupervisor),
+      'accumulatedSupervisionTime': serializer.toJson<int?>(
+        accumulatedSupervisionTime,
+      ),
+      'accumulatedDiveTime': serializer.toJson<int?>(accumulatedDiveTime),
       'localPdfPath': serializer.toJson<String?>(localPdfPath),
     };
   }
@@ -508,13 +983,26 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
     DateTime? updatedAt,
     DateTime? date,
     String? location,
-    String? diveSite,
     Value<String?> client = const Value.absent(),
     Value<String?> diveOperator = const Value.absent(),
+    Value<String?> operatorAddress = const Value.absent(),
+    Value<String?> diveType = const Value.absent(),
+    Value<String?> diversNames = const Value.absent(),
+    Value<DateTime?> entryTime = const Value.absent(),
+    Value<DateTime?> exitTime = const Value.absent(),
     double? maxDepth,
+    Value<int?> surfaceInterval = const Value.absent(),
     int? bottomTime,
-    Value<String?> buddy = const Value.absent(),
-    Value<String?> notes = const Value.absent(),
+    Value<DateTime?> decompressionStart = const Value.absent(),
+    Value<DateTime?> decompressionComplete = const Value.absent(),
+    Value<int?> totalDiveTime = const Value.absent(),
+    Value<String?> gasMixture = const Value.absent(),
+    Value<String?> workDescription = const Value.absent(),
+    Value<String?> decompressionUsed = const Value.absent(),
+    Value<String?> illnessOrInjury = const Value.absent(),
+    Value<String?> diveSupervisor = const Value.absent(),
+    Value<int?> accumulatedSupervisionTime = const Value.absent(),
+    Value<int?> accumulatedDiveTime = const Value.absent(),
     Value<String?> localPdfPath = const Value.absent(),
   }) => DiveSession(
     id: id ?? this.id,
@@ -523,13 +1011,48 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
     updatedAt: updatedAt ?? this.updatedAt,
     date: date ?? this.date,
     location: location ?? this.location,
-    diveSite: diveSite ?? this.diveSite,
     client: client.present ? client.value : this.client,
     diveOperator: diveOperator.present ? diveOperator.value : this.diveOperator,
+    operatorAddress: operatorAddress.present
+        ? operatorAddress.value
+        : this.operatorAddress,
+    diveType: diveType.present ? diveType.value : this.diveType,
+    diversNames: diversNames.present ? diversNames.value : this.diversNames,
+    entryTime: entryTime.present ? entryTime.value : this.entryTime,
+    exitTime: exitTime.present ? exitTime.value : this.exitTime,
     maxDepth: maxDepth ?? this.maxDepth,
+    surfaceInterval: surfaceInterval.present
+        ? surfaceInterval.value
+        : this.surfaceInterval,
     bottomTime: bottomTime ?? this.bottomTime,
-    buddy: buddy.present ? buddy.value : this.buddy,
-    notes: notes.present ? notes.value : this.notes,
+    decompressionStart: decompressionStart.present
+        ? decompressionStart.value
+        : this.decompressionStart,
+    decompressionComplete: decompressionComplete.present
+        ? decompressionComplete.value
+        : this.decompressionComplete,
+    totalDiveTime: totalDiveTime.present
+        ? totalDiveTime.value
+        : this.totalDiveTime,
+    gasMixture: gasMixture.present ? gasMixture.value : this.gasMixture,
+    workDescription: workDescription.present
+        ? workDescription.value
+        : this.workDescription,
+    decompressionUsed: decompressionUsed.present
+        ? decompressionUsed.value
+        : this.decompressionUsed,
+    illnessOrInjury: illnessOrInjury.present
+        ? illnessOrInjury.value
+        : this.illnessOrInjury,
+    diveSupervisor: diveSupervisor.present
+        ? diveSupervisor.value
+        : this.diveSupervisor,
+    accumulatedSupervisionTime: accumulatedSupervisionTime.present
+        ? accumulatedSupervisionTime.value
+        : this.accumulatedSupervisionTime,
+    accumulatedDiveTime: accumulatedDiveTime.present
+        ? accumulatedDiveTime.value
+        : this.accumulatedDiveTime,
     localPdfPath: localPdfPath.present ? localPdfPath.value : this.localPdfPath,
   );
   DiveSession copyWithCompanion(DiveSessionsCompanion data) {
@@ -544,17 +1067,56 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
       date: data.date.present ? data.date.value : this.date,
       location: data.location.present ? data.location.value : this.location,
-      diveSite: data.diveSite.present ? data.diveSite.value : this.diveSite,
       client: data.client.present ? data.client.value : this.client,
       diveOperator: data.diveOperator.present
           ? data.diveOperator.value
           : this.diveOperator,
+      operatorAddress: data.operatorAddress.present
+          ? data.operatorAddress.value
+          : this.operatorAddress,
+      diveType: data.diveType.present ? data.diveType.value : this.diveType,
+      diversNames: data.diversNames.present
+          ? data.diversNames.value
+          : this.diversNames,
+      entryTime: data.entryTime.present ? data.entryTime.value : this.entryTime,
+      exitTime: data.exitTime.present ? data.exitTime.value : this.exitTime,
       maxDepth: data.maxDepth.present ? data.maxDepth.value : this.maxDepth,
+      surfaceInterval: data.surfaceInterval.present
+          ? data.surfaceInterval.value
+          : this.surfaceInterval,
       bottomTime: data.bottomTime.present
           ? data.bottomTime.value
           : this.bottomTime,
-      buddy: data.buddy.present ? data.buddy.value : this.buddy,
-      notes: data.notes.present ? data.notes.value : this.notes,
+      decompressionStart: data.decompressionStart.present
+          ? data.decompressionStart.value
+          : this.decompressionStart,
+      decompressionComplete: data.decompressionComplete.present
+          ? data.decompressionComplete.value
+          : this.decompressionComplete,
+      totalDiveTime: data.totalDiveTime.present
+          ? data.totalDiveTime.value
+          : this.totalDiveTime,
+      gasMixture: data.gasMixture.present
+          ? data.gasMixture.value
+          : this.gasMixture,
+      workDescription: data.workDescription.present
+          ? data.workDescription.value
+          : this.workDescription,
+      decompressionUsed: data.decompressionUsed.present
+          ? data.decompressionUsed.value
+          : this.decompressionUsed,
+      illnessOrInjury: data.illnessOrInjury.present
+          ? data.illnessOrInjury.value
+          : this.illnessOrInjury,
+      diveSupervisor: data.diveSupervisor.present
+          ? data.diveSupervisor.value
+          : this.diveSupervisor,
+      accumulatedSupervisionTime: data.accumulatedSupervisionTime.present
+          ? data.accumulatedSupervisionTime.value
+          : this.accumulatedSupervisionTime,
+      accumulatedDiveTime: data.accumulatedDiveTime.present
+          ? data.accumulatedDiveTime.value
+          : this.accumulatedDiveTime,
       localPdfPath: data.localPdfPath.present
           ? data.localPdfPath.value
           : this.localPdfPath,
@@ -570,35 +1132,61 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
           ..write('updatedAt: $updatedAt, ')
           ..write('date: $date, ')
           ..write('location: $location, ')
-          ..write('diveSite: $diveSite, ')
           ..write('client: $client, ')
           ..write('diveOperator: $diveOperator, ')
+          ..write('operatorAddress: $operatorAddress, ')
+          ..write('diveType: $diveType, ')
+          ..write('diversNames: $diversNames, ')
+          ..write('entryTime: $entryTime, ')
+          ..write('exitTime: $exitTime, ')
           ..write('maxDepth: $maxDepth, ')
+          ..write('surfaceInterval: $surfaceInterval, ')
           ..write('bottomTime: $bottomTime, ')
-          ..write('buddy: $buddy, ')
-          ..write('notes: $notes, ')
+          ..write('decompressionStart: $decompressionStart, ')
+          ..write('decompressionComplete: $decompressionComplete, ')
+          ..write('totalDiveTime: $totalDiveTime, ')
+          ..write('gasMixture: $gasMixture, ')
+          ..write('workDescription: $workDescription, ')
+          ..write('decompressionUsed: $decompressionUsed, ')
+          ..write('illnessOrInjury: $illnessOrInjury, ')
+          ..write('diveSupervisor: $diveSupervisor, ')
+          ..write('accumulatedSupervisionTime: $accumulatedSupervisionTime, ')
+          ..write('accumulatedDiveTime: $accumulatedDiveTime, ')
           ..write('localPdfPath: $localPdfPath')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(
+  int get hashCode => Object.hashAll([
     id,
     firestoreId,
     syncStatus,
     updatedAt,
     date,
     location,
-    diveSite,
     client,
     diveOperator,
+    operatorAddress,
+    diveType,
+    diversNames,
+    entryTime,
+    exitTime,
     maxDepth,
+    surfaceInterval,
     bottomTime,
-    buddy,
-    notes,
+    decompressionStart,
+    decompressionComplete,
+    totalDiveTime,
+    gasMixture,
+    workDescription,
+    decompressionUsed,
+    illnessOrInjury,
+    diveSupervisor,
+    accumulatedSupervisionTime,
+    accumulatedDiveTime,
     localPdfPath,
-  );
+  ]);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -609,13 +1197,26 @@ class DiveSession extends DataClass implements Insertable<DiveSession> {
           other.updatedAt == this.updatedAt &&
           other.date == this.date &&
           other.location == this.location &&
-          other.diveSite == this.diveSite &&
           other.client == this.client &&
           other.diveOperator == this.diveOperator &&
+          other.operatorAddress == this.operatorAddress &&
+          other.diveType == this.diveType &&
+          other.diversNames == this.diversNames &&
+          other.entryTime == this.entryTime &&
+          other.exitTime == this.exitTime &&
           other.maxDepth == this.maxDepth &&
+          other.surfaceInterval == this.surfaceInterval &&
           other.bottomTime == this.bottomTime &&
-          other.buddy == this.buddy &&
-          other.notes == this.notes &&
+          other.decompressionStart == this.decompressionStart &&
+          other.decompressionComplete == this.decompressionComplete &&
+          other.totalDiveTime == this.totalDiveTime &&
+          other.gasMixture == this.gasMixture &&
+          other.workDescription == this.workDescription &&
+          other.decompressionUsed == this.decompressionUsed &&
+          other.illnessOrInjury == this.illnessOrInjury &&
+          other.diveSupervisor == this.diveSupervisor &&
+          other.accumulatedSupervisionTime == this.accumulatedSupervisionTime &&
+          other.accumulatedDiveTime == this.accumulatedDiveTime &&
           other.localPdfPath == this.localPdfPath);
 }
 
@@ -626,13 +1227,26 @@ class DiveSessionsCompanion extends UpdateCompanion<DiveSession> {
   final Value<DateTime> updatedAt;
   final Value<DateTime> date;
   final Value<String> location;
-  final Value<String> diveSite;
   final Value<String?> client;
   final Value<String?> diveOperator;
+  final Value<String?> operatorAddress;
+  final Value<String?> diveType;
+  final Value<String?> diversNames;
+  final Value<DateTime?> entryTime;
+  final Value<DateTime?> exitTime;
   final Value<double> maxDepth;
+  final Value<int?> surfaceInterval;
   final Value<int> bottomTime;
-  final Value<String?> buddy;
-  final Value<String?> notes;
+  final Value<DateTime?> decompressionStart;
+  final Value<DateTime?> decompressionComplete;
+  final Value<int?> totalDiveTime;
+  final Value<String?> gasMixture;
+  final Value<String?> workDescription;
+  final Value<String?> decompressionUsed;
+  final Value<String?> illnessOrInjury;
+  final Value<String?> diveSupervisor;
+  final Value<int?> accumulatedSupervisionTime;
+  final Value<int?> accumulatedDiveTime;
   final Value<String?> localPdfPath;
   const DiveSessionsCompanion({
     this.id = const Value.absent(),
@@ -641,13 +1255,26 @@ class DiveSessionsCompanion extends UpdateCompanion<DiveSession> {
     this.updatedAt = const Value.absent(),
     this.date = const Value.absent(),
     this.location = const Value.absent(),
-    this.diveSite = const Value.absent(),
     this.client = const Value.absent(),
     this.diveOperator = const Value.absent(),
+    this.operatorAddress = const Value.absent(),
+    this.diveType = const Value.absent(),
+    this.diversNames = const Value.absent(),
+    this.entryTime = const Value.absent(),
+    this.exitTime = const Value.absent(),
     this.maxDepth = const Value.absent(),
+    this.surfaceInterval = const Value.absent(),
     this.bottomTime = const Value.absent(),
-    this.buddy = const Value.absent(),
-    this.notes = const Value.absent(),
+    this.decompressionStart = const Value.absent(),
+    this.decompressionComplete = const Value.absent(),
+    this.totalDiveTime = const Value.absent(),
+    this.gasMixture = const Value.absent(),
+    this.workDescription = const Value.absent(),
+    this.decompressionUsed = const Value.absent(),
+    this.illnessOrInjury = const Value.absent(),
+    this.diveSupervisor = const Value.absent(),
+    this.accumulatedSupervisionTime = const Value.absent(),
+    this.accumulatedDiveTime = const Value.absent(),
     this.localPdfPath = const Value.absent(),
   });
   DiveSessionsCompanion.insert({
@@ -657,17 +1284,29 @@ class DiveSessionsCompanion extends UpdateCompanion<DiveSession> {
     this.updatedAt = const Value.absent(),
     required DateTime date,
     required String location,
-    required String diveSite,
     this.client = const Value.absent(),
     this.diveOperator = const Value.absent(),
+    this.operatorAddress = const Value.absent(),
+    this.diveType = const Value.absent(),
+    this.diversNames = const Value.absent(),
+    this.entryTime = const Value.absent(),
+    this.exitTime = const Value.absent(),
     required double maxDepth,
+    this.surfaceInterval = const Value.absent(),
     required int bottomTime,
-    this.buddy = const Value.absent(),
-    this.notes = const Value.absent(),
+    this.decompressionStart = const Value.absent(),
+    this.decompressionComplete = const Value.absent(),
+    this.totalDiveTime = const Value.absent(),
+    this.gasMixture = const Value.absent(),
+    this.workDescription = const Value.absent(),
+    this.decompressionUsed = const Value.absent(),
+    this.illnessOrInjury = const Value.absent(),
+    this.diveSupervisor = const Value.absent(),
+    this.accumulatedSupervisionTime = const Value.absent(),
+    this.accumulatedDiveTime = const Value.absent(),
     this.localPdfPath = const Value.absent(),
   }) : date = Value(date),
        location = Value(location),
-       diveSite = Value(diveSite),
        maxDepth = Value(maxDepth),
        bottomTime = Value(bottomTime);
   static Insertable<DiveSession> custom({
@@ -677,13 +1316,26 @@ class DiveSessionsCompanion extends UpdateCompanion<DiveSession> {
     Expression<DateTime>? updatedAt,
     Expression<DateTime>? date,
     Expression<String>? location,
-    Expression<String>? diveSite,
     Expression<String>? client,
     Expression<String>? diveOperator,
+    Expression<String>? operatorAddress,
+    Expression<String>? diveType,
+    Expression<String>? diversNames,
+    Expression<DateTime>? entryTime,
+    Expression<DateTime>? exitTime,
     Expression<double>? maxDepth,
+    Expression<int>? surfaceInterval,
     Expression<int>? bottomTime,
-    Expression<String>? buddy,
-    Expression<String>? notes,
+    Expression<DateTime>? decompressionStart,
+    Expression<DateTime>? decompressionComplete,
+    Expression<int>? totalDiveTime,
+    Expression<String>? gasMixture,
+    Expression<String>? workDescription,
+    Expression<String>? decompressionUsed,
+    Expression<String>? illnessOrInjury,
+    Expression<String>? diveSupervisor,
+    Expression<int>? accumulatedSupervisionTime,
+    Expression<int>? accumulatedDiveTime,
     Expression<String>? localPdfPath,
   }) {
     return RawValuesInsertable({
@@ -693,13 +1345,29 @@ class DiveSessionsCompanion extends UpdateCompanion<DiveSession> {
       if (updatedAt != null) 'updated_at': updatedAt,
       if (date != null) 'date': date,
       if (location != null) 'location': location,
-      if (diveSite != null) 'dive_site': diveSite,
       if (client != null) 'client': client,
       if (diveOperator != null) 'dive_operator': diveOperator,
+      if (operatorAddress != null) 'operator_address': operatorAddress,
+      if (diveType != null) 'dive_type': diveType,
+      if (diversNames != null) 'divers_names': diversNames,
+      if (entryTime != null) 'entry_time': entryTime,
+      if (exitTime != null) 'exit_time': exitTime,
       if (maxDepth != null) 'max_depth': maxDepth,
+      if (surfaceInterval != null) 'surface_interval': surfaceInterval,
       if (bottomTime != null) 'bottom_time': bottomTime,
-      if (buddy != null) 'buddy': buddy,
-      if (notes != null) 'notes': notes,
+      if (decompressionStart != null) 'decompression_start': decompressionStart,
+      if (decompressionComplete != null)
+        'decompression_complete': decompressionComplete,
+      if (totalDiveTime != null) 'total_dive_time': totalDiveTime,
+      if (gasMixture != null) 'gas_mixture': gasMixture,
+      if (workDescription != null) 'work_description': workDescription,
+      if (decompressionUsed != null) 'decompression_used': decompressionUsed,
+      if (illnessOrInjury != null) 'illness_or_injury': illnessOrInjury,
+      if (diveSupervisor != null) 'dive_supervisor': diveSupervisor,
+      if (accumulatedSupervisionTime != null)
+        'accumulated_supervision_time': accumulatedSupervisionTime,
+      if (accumulatedDiveTime != null)
+        'accumulated_dive_time': accumulatedDiveTime,
       if (localPdfPath != null) 'local_pdf_path': localPdfPath,
     });
   }
@@ -711,13 +1379,26 @@ class DiveSessionsCompanion extends UpdateCompanion<DiveSession> {
     Value<DateTime>? updatedAt,
     Value<DateTime>? date,
     Value<String>? location,
-    Value<String>? diveSite,
     Value<String?>? client,
     Value<String?>? diveOperator,
+    Value<String?>? operatorAddress,
+    Value<String?>? diveType,
+    Value<String?>? diversNames,
+    Value<DateTime?>? entryTime,
+    Value<DateTime?>? exitTime,
     Value<double>? maxDepth,
+    Value<int?>? surfaceInterval,
     Value<int>? bottomTime,
-    Value<String?>? buddy,
-    Value<String?>? notes,
+    Value<DateTime?>? decompressionStart,
+    Value<DateTime?>? decompressionComplete,
+    Value<int?>? totalDiveTime,
+    Value<String?>? gasMixture,
+    Value<String?>? workDescription,
+    Value<String?>? decompressionUsed,
+    Value<String?>? illnessOrInjury,
+    Value<String?>? diveSupervisor,
+    Value<int?>? accumulatedSupervisionTime,
+    Value<int?>? accumulatedDiveTime,
     Value<String?>? localPdfPath,
   }) {
     return DiveSessionsCompanion(
@@ -727,13 +1408,28 @@ class DiveSessionsCompanion extends UpdateCompanion<DiveSession> {
       updatedAt: updatedAt ?? this.updatedAt,
       date: date ?? this.date,
       location: location ?? this.location,
-      diveSite: diveSite ?? this.diveSite,
       client: client ?? this.client,
       diveOperator: diveOperator ?? this.diveOperator,
+      operatorAddress: operatorAddress ?? this.operatorAddress,
+      diveType: diveType ?? this.diveType,
+      diversNames: diversNames ?? this.diversNames,
+      entryTime: entryTime ?? this.entryTime,
+      exitTime: exitTime ?? this.exitTime,
       maxDepth: maxDepth ?? this.maxDepth,
+      surfaceInterval: surfaceInterval ?? this.surfaceInterval,
       bottomTime: bottomTime ?? this.bottomTime,
-      buddy: buddy ?? this.buddy,
-      notes: notes ?? this.notes,
+      decompressionStart: decompressionStart ?? this.decompressionStart,
+      decompressionComplete:
+          decompressionComplete ?? this.decompressionComplete,
+      totalDiveTime: totalDiveTime ?? this.totalDiveTime,
+      gasMixture: gasMixture ?? this.gasMixture,
+      workDescription: workDescription ?? this.workDescription,
+      decompressionUsed: decompressionUsed ?? this.decompressionUsed,
+      illnessOrInjury: illnessOrInjury ?? this.illnessOrInjury,
+      diveSupervisor: diveSupervisor ?? this.diveSupervisor,
+      accumulatedSupervisionTime:
+          accumulatedSupervisionTime ?? this.accumulatedSupervisionTime,
+      accumulatedDiveTime: accumulatedDiveTime ?? this.accumulatedDiveTime,
       localPdfPath: localPdfPath ?? this.localPdfPath,
     );
   }
@@ -761,26 +1457,69 @@ class DiveSessionsCompanion extends UpdateCompanion<DiveSession> {
     if (location.present) {
       map['location'] = Variable<String>(location.value);
     }
-    if (diveSite.present) {
-      map['dive_site'] = Variable<String>(diveSite.value);
-    }
     if (client.present) {
       map['client'] = Variable<String>(client.value);
     }
     if (diveOperator.present) {
       map['dive_operator'] = Variable<String>(diveOperator.value);
     }
+    if (operatorAddress.present) {
+      map['operator_address'] = Variable<String>(operatorAddress.value);
+    }
+    if (diveType.present) {
+      map['dive_type'] = Variable<String>(diveType.value);
+    }
+    if (diversNames.present) {
+      map['divers_names'] = Variable<String>(diversNames.value);
+    }
+    if (entryTime.present) {
+      map['entry_time'] = Variable<DateTime>(entryTime.value);
+    }
+    if (exitTime.present) {
+      map['exit_time'] = Variable<DateTime>(exitTime.value);
+    }
     if (maxDepth.present) {
       map['max_depth'] = Variable<double>(maxDepth.value);
+    }
+    if (surfaceInterval.present) {
+      map['surface_interval'] = Variable<int>(surfaceInterval.value);
     }
     if (bottomTime.present) {
       map['bottom_time'] = Variable<int>(bottomTime.value);
     }
-    if (buddy.present) {
-      map['buddy'] = Variable<String>(buddy.value);
+    if (decompressionStart.present) {
+      map['decompression_start'] = Variable<DateTime>(decompressionStart.value);
     }
-    if (notes.present) {
-      map['notes'] = Variable<String>(notes.value);
+    if (decompressionComplete.present) {
+      map['decompression_complete'] = Variable<DateTime>(
+        decompressionComplete.value,
+      );
+    }
+    if (totalDiveTime.present) {
+      map['total_dive_time'] = Variable<int>(totalDiveTime.value);
+    }
+    if (gasMixture.present) {
+      map['gas_mixture'] = Variable<String>(gasMixture.value);
+    }
+    if (workDescription.present) {
+      map['work_description'] = Variable<String>(workDescription.value);
+    }
+    if (decompressionUsed.present) {
+      map['decompression_used'] = Variable<String>(decompressionUsed.value);
+    }
+    if (illnessOrInjury.present) {
+      map['illness_or_injury'] = Variable<String>(illnessOrInjury.value);
+    }
+    if (diveSupervisor.present) {
+      map['dive_supervisor'] = Variable<String>(diveSupervisor.value);
+    }
+    if (accumulatedSupervisionTime.present) {
+      map['accumulated_supervision_time'] = Variable<int>(
+        accumulatedSupervisionTime.value,
+      );
+    }
+    if (accumulatedDiveTime.present) {
+      map['accumulated_dive_time'] = Variable<int>(accumulatedDiveTime.value);
     }
     if (localPdfPath.present) {
       map['local_pdf_path'] = Variable<String>(localPdfPath.value);
@@ -797,13 +1536,26 @@ class DiveSessionsCompanion extends UpdateCompanion<DiveSession> {
           ..write('updatedAt: $updatedAt, ')
           ..write('date: $date, ')
           ..write('location: $location, ')
-          ..write('diveSite: $diveSite, ')
           ..write('client: $client, ')
           ..write('diveOperator: $diveOperator, ')
+          ..write('operatorAddress: $operatorAddress, ')
+          ..write('diveType: $diveType, ')
+          ..write('diversNames: $diversNames, ')
+          ..write('entryTime: $entryTime, ')
+          ..write('exitTime: $exitTime, ')
           ..write('maxDepth: $maxDepth, ')
+          ..write('surfaceInterval: $surfaceInterval, ')
           ..write('bottomTime: $bottomTime, ')
-          ..write('buddy: $buddy, ')
-          ..write('notes: $notes, ')
+          ..write('decompressionStart: $decompressionStart, ')
+          ..write('decompressionComplete: $decompressionComplete, ')
+          ..write('totalDiveTime: $totalDiveTime, ')
+          ..write('gasMixture: $gasMixture, ')
+          ..write('workDescription: $workDescription, ')
+          ..write('decompressionUsed: $decompressionUsed, ')
+          ..write('illnessOrInjury: $illnessOrInjury, ')
+          ..write('diveSupervisor: $diveSupervisor, ')
+          ..write('accumulatedSupervisionTime: $accumulatedSupervisionTime, ')
+          ..write('accumulatedDiveTime: $accumulatedDiveTime, ')
           ..write('localPdfPath: $localPdfPath')
           ..write(')'))
         .toString();
@@ -829,13 +1581,26 @@ typedef $$DiveSessionsTableCreateCompanionBuilder =
       Value<DateTime> updatedAt,
       required DateTime date,
       required String location,
-      required String diveSite,
       Value<String?> client,
       Value<String?> diveOperator,
+      Value<String?> operatorAddress,
+      Value<String?> diveType,
+      Value<String?> diversNames,
+      Value<DateTime?> entryTime,
+      Value<DateTime?> exitTime,
       required double maxDepth,
+      Value<int?> surfaceInterval,
       required int bottomTime,
-      Value<String?> buddy,
-      Value<String?> notes,
+      Value<DateTime?> decompressionStart,
+      Value<DateTime?> decompressionComplete,
+      Value<int?> totalDiveTime,
+      Value<String?> gasMixture,
+      Value<String?> workDescription,
+      Value<String?> decompressionUsed,
+      Value<String?> illnessOrInjury,
+      Value<String?> diveSupervisor,
+      Value<int?> accumulatedSupervisionTime,
+      Value<int?> accumulatedDiveTime,
       Value<String?> localPdfPath,
     });
 typedef $$DiveSessionsTableUpdateCompanionBuilder =
@@ -846,13 +1611,26 @@ typedef $$DiveSessionsTableUpdateCompanionBuilder =
       Value<DateTime> updatedAt,
       Value<DateTime> date,
       Value<String> location,
-      Value<String> diveSite,
       Value<String?> client,
       Value<String?> diveOperator,
+      Value<String?> operatorAddress,
+      Value<String?> diveType,
+      Value<String?> diversNames,
+      Value<DateTime?> entryTime,
+      Value<DateTime?> exitTime,
       Value<double> maxDepth,
+      Value<int?> surfaceInterval,
       Value<int> bottomTime,
-      Value<String?> buddy,
-      Value<String?> notes,
+      Value<DateTime?> decompressionStart,
+      Value<DateTime?> decompressionComplete,
+      Value<int?> totalDiveTime,
+      Value<String?> gasMixture,
+      Value<String?> workDescription,
+      Value<String?> decompressionUsed,
+      Value<String?> illnessOrInjury,
+      Value<String?> diveSupervisor,
+      Value<int?> accumulatedSupervisionTime,
+      Value<int?> accumulatedDiveTime,
       Value<String?> localPdfPath,
     });
 
@@ -896,11 +1674,6 @@ class $$DiveSessionsTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnFilters<String> get diveSite => $composableBuilder(
-    column: $table.diveSite,
-    builder: (column) => ColumnFilters(column),
-  );
-
   ColumnFilters<String> get client => $composableBuilder(
     column: $table.client,
     builder: (column) => ColumnFilters(column),
@@ -911,8 +1684,38 @@ class $$DiveSessionsTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
+  ColumnFilters<String> get operatorAddress => $composableBuilder(
+    column: $table.operatorAddress,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get diveType => $composableBuilder(
+    column: $table.diveType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get diversNames => $composableBuilder(
+    column: $table.diversNames,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get entryTime => $composableBuilder(
+    column: $table.entryTime,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get exitTime => $composableBuilder(
+    column: $table.exitTime,
+    builder: (column) => ColumnFilters(column),
+  );
+
   ColumnFilters<double> get maxDepth => $composableBuilder(
     column: $table.maxDepth,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get surfaceInterval => $composableBuilder(
+    column: $table.surfaceInterval,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -921,13 +1724,53 @@ class $$DiveSessionsTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnFilters<String> get buddy => $composableBuilder(
-    column: $table.buddy,
+  ColumnFilters<DateTime> get decompressionStart => $composableBuilder(
+    column: $table.decompressionStart,
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnFilters<String> get notes => $composableBuilder(
-    column: $table.notes,
+  ColumnFilters<DateTime> get decompressionComplete => $composableBuilder(
+    column: $table.decompressionComplete,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get totalDiveTime => $composableBuilder(
+    column: $table.totalDiveTime,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get gasMixture => $composableBuilder(
+    column: $table.gasMixture,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get workDescription => $composableBuilder(
+    column: $table.workDescription,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get decompressionUsed => $composableBuilder(
+    column: $table.decompressionUsed,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get illnessOrInjury => $composableBuilder(
+    column: $table.illnessOrInjury,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get diveSupervisor => $composableBuilder(
+    column: $table.diveSupervisor,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get accumulatedSupervisionTime => $composableBuilder(
+    column: $table.accumulatedSupervisionTime,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get accumulatedDiveTime => $composableBuilder(
+    column: $table.accumulatedDiveTime,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -976,11 +1819,6 @@ class $$DiveSessionsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
-  ColumnOrderings<String> get diveSite => $composableBuilder(
-    column: $table.diveSite,
-    builder: (column) => ColumnOrderings(column),
-  );
-
   ColumnOrderings<String> get client => $composableBuilder(
     column: $table.client,
     builder: (column) => ColumnOrderings(column),
@@ -991,8 +1829,38 @@ class $$DiveSessionsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get operatorAddress => $composableBuilder(
+    column: $table.operatorAddress,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get diveType => $composableBuilder(
+    column: $table.diveType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get diversNames => $composableBuilder(
+    column: $table.diversNames,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get entryTime => $composableBuilder(
+    column: $table.entryTime,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get exitTime => $composableBuilder(
+    column: $table.exitTime,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<double> get maxDepth => $composableBuilder(
     column: $table.maxDepth,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get surfaceInterval => $composableBuilder(
+    column: $table.surfaceInterval,
     builder: (column) => ColumnOrderings(column),
   );
 
@@ -1001,13 +1869,53 @@ class $$DiveSessionsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
-  ColumnOrderings<String> get buddy => $composableBuilder(
-    column: $table.buddy,
+  ColumnOrderings<DateTime> get decompressionStart => $composableBuilder(
+    column: $table.decompressionStart,
     builder: (column) => ColumnOrderings(column),
   );
 
-  ColumnOrderings<String> get notes => $composableBuilder(
-    column: $table.notes,
+  ColumnOrderings<DateTime> get decompressionComplete => $composableBuilder(
+    column: $table.decompressionComplete,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get totalDiveTime => $composableBuilder(
+    column: $table.totalDiveTime,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get gasMixture => $composableBuilder(
+    column: $table.gasMixture,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get workDescription => $composableBuilder(
+    column: $table.workDescription,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get decompressionUsed => $composableBuilder(
+    column: $table.decompressionUsed,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get illnessOrInjury => $composableBuilder(
+    column: $table.illnessOrInjury,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get diveSupervisor => $composableBuilder(
+    column: $table.diveSupervisor,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get accumulatedSupervisionTime => $composableBuilder(
+    column: $table.accumulatedSupervisionTime,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get accumulatedDiveTime => $composableBuilder(
+    column: $table.accumulatedDiveTime,
     builder: (column) => ColumnOrderings(column),
   );
 
@@ -1049,9 +1957,6 @@ class $$DiveSessionsTableAnnotationComposer
   GeneratedColumn<String> get location =>
       $composableBuilder(column: $table.location, builder: (column) => column);
 
-  GeneratedColumn<String> get diveSite =>
-      $composableBuilder(column: $table.diveSite, builder: (column) => column);
-
   GeneratedColumn<String> get client =>
       $composableBuilder(column: $table.client, builder: (column) => column);
 
@@ -1060,19 +1965,87 @@ class $$DiveSessionsTableAnnotationComposer
     builder: (column) => column,
   );
 
+  GeneratedColumn<String> get operatorAddress => $composableBuilder(
+    column: $table.operatorAddress,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get diveType =>
+      $composableBuilder(column: $table.diveType, builder: (column) => column);
+
+  GeneratedColumn<String> get diversNames => $composableBuilder(
+    column: $table.diversNames,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get entryTime =>
+      $composableBuilder(column: $table.entryTime, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get exitTime =>
+      $composableBuilder(column: $table.exitTime, builder: (column) => column);
+
   GeneratedColumn<double> get maxDepth =>
       $composableBuilder(column: $table.maxDepth, builder: (column) => column);
+
+  GeneratedColumn<int> get surfaceInterval => $composableBuilder(
+    column: $table.surfaceInterval,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<int> get bottomTime => $composableBuilder(
     column: $table.bottomTime,
     builder: (column) => column,
   );
 
-  GeneratedColumn<String> get buddy =>
-      $composableBuilder(column: $table.buddy, builder: (column) => column);
+  GeneratedColumn<DateTime> get decompressionStart => $composableBuilder(
+    column: $table.decompressionStart,
+    builder: (column) => column,
+  );
 
-  GeneratedColumn<String> get notes =>
-      $composableBuilder(column: $table.notes, builder: (column) => column);
+  GeneratedColumn<DateTime> get decompressionComplete => $composableBuilder(
+    column: $table.decompressionComplete,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get totalDiveTime => $composableBuilder(
+    column: $table.totalDiveTime,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get gasMixture => $composableBuilder(
+    column: $table.gasMixture,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get workDescription => $composableBuilder(
+    column: $table.workDescription,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get decompressionUsed => $composableBuilder(
+    column: $table.decompressionUsed,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get illnessOrInjury => $composableBuilder(
+    column: $table.illnessOrInjury,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get diveSupervisor => $composableBuilder(
+    column: $table.diveSupervisor,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get accumulatedSupervisionTime => $composableBuilder(
+    column: $table.accumulatedSupervisionTime,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get accumulatedDiveTime => $composableBuilder(
+    column: $table.accumulatedDiveTime,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<String> get localPdfPath => $composableBuilder(
     column: $table.localPdfPath,
@@ -1117,13 +2090,26 @@ class $$DiveSessionsTableTableManager
                 Value<DateTime> updatedAt = const Value.absent(),
                 Value<DateTime> date = const Value.absent(),
                 Value<String> location = const Value.absent(),
-                Value<String> diveSite = const Value.absent(),
                 Value<String?> client = const Value.absent(),
                 Value<String?> diveOperator = const Value.absent(),
+                Value<String?> operatorAddress = const Value.absent(),
+                Value<String?> diveType = const Value.absent(),
+                Value<String?> diversNames = const Value.absent(),
+                Value<DateTime?> entryTime = const Value.absent(),
+                Value<DateTime?> exitTime = const Value.absent(),
                 Value<double> maxDepth = const Value.absent(),
+                Value<int?> surfaceInterval = const Value.absent(),
                 Value<int> bottomTime = const Value.absent(),
-                Value<String?> buddy = const Value.absent(),
-                Value<String?> notes = const Value.absent(),
+                Value<DateTime?> decompressionStart = const Value.absent(),
+                Value<DateTime?> decompressionComplete = const Value.absent(),
+                Value<int?> totalDiveTime = const Value.absent(),
+                Value<String?> gasMixture = const Value.absent(),
+                Value<String?> workDescription = const Value.absent(),
+                Value<String?> decompressionUsed = const Value.absent(),
+                Value<String?> illnessOrInjury = const Value.absent(),
+                Value<String?> diveSupervisor = const Value.absent(),
+                Value<int?> accumulatedSupervisionTime = const Value.absent(),
+                Value<int?> accumulatedDiveTime = const Value.absent(),
                 Value<String?> localPdfPath = const Value.absent(),
               }) => DiveSessionsCompanion(
                 id: id,
@@ -1132,13 +2118,26 @@ class $$DiveSessionsTableTableManager
                 updatedAt: updatedAt,
                 date: date,
                 location: location,
-                diveSite: diveSite,
                 client: client,
                 diveOperator: diveOperator,
+                operatorAddress: operatorAddress,
+                diveType: diveType,
+                diversNames: diversNames,
+                entryTime: entryTime,
+                exitTime: exitTime,
                 maxDepth: maxDepth,
+                surfaceInterval: surfaceInterval,
                 bottomTime: bottomTime,
-                buddy: buddy,
-                notes: notes,
+                decompressionStart: decompressionStart,
+                decompressionComplete: decompressionComplete,
+                totalDiveTime: totalDiveTime,
+                gasMixture: gasMixture,
+                workDescription: workDescription,
+                decompressionUsed: decompressionUsed,
+                illnessOrInjury: illnessOrInjury,
+                diveSupervisor: diveSupervisor,
+                accumulatedSupervisionTime: accumulatedSupervisionTime,
+                accumulatedDiveTime: accumulatedDiveTime,
                 localPdfPath: localPdfPath,
               ),
           createCompanionCallback:
@@ -1149,13 +2148,26 @@ class $$DiveSessionsTableTableManager
                 Value<DateTime> updatedAt = const Value.absent(),
                 required DateTime date,
                 required String location,
-                required String diveSite,
                 Value<String?> client = const Value.absent(),
                 Value<String?> diveOperator = const Value.absent(),
+                Value<String?> operatorAddress = const Value.absent(),
+                Value<String?> diveType = const Value.absent(),
+                Value<String?> diversNames = const Value.absent(),
+                Value<DateTime?> entryTime = const Value.absent(),
+                Value<DateTime?> exitTime = const Value.absent(),
                 required double maxDepth,
+                Value<int?> surfaceInterval = const Value.absent(),
                 required int bottomTime,
-                Value<String?> buddy = const Value.absent(),
-                Value<String?> notes = const Value.absent(),
+                Value<DateTime?> decompressionStart = const Value.absent(),
+                Value<DateTime?> decompressionComplete = const Value.absent(),
+                Value<int?> totalDiveTime = const Value.absent(),
+                Value<String?> gasMixture = const Value.absent(),
+                Value<String?> workDescription = const Value.absent(),
+                Value<String?> decompressionUsed = const Value.absent(),
+                Value<String?> illnessOrInjury = const Value.absent(),
+                Value<String?> diveSupervisor = const Value.absent(),
+                Value<int?> accumulatedSupervisionTime = const Value.absent(),
+                Value<int?> accumulatedDiveTime = const Value.absent(),
                 Value<String?> localPdfPath = const Value.absent(),
               }) => DiveSessionsCompanion.insert(
                 id: id,
@@ -1164,13 +2176,26 @@ class $$DiveSessionsTableTableManager
                 updatedAt: updatedAt,
                 date: date,
                 location: location,
-                diveSite: diveSite,
                 client: client,
                 diveOperator: diveOperator,
+                operatorAddress: operatorAddress,
+                diveType: diveType,
+                diversNames: diversNames,
+                entryTime: entryTime,
+                exitTime: exitTime,
                 maxDepth: maxDepth,
+                surfaceInterval: surfaceInterval,
                 bottomTime: bottomTime,
-                buddy: buddy,
-                notes: notes,
+                decompressionStart: decompressionStart,
+                decompressionComplete: decompressionComplete,
+                totalDiveTime: totalDiveTime,
+                gasMixture: gasMixture,
+                workDescription: workDescription,
+                decompressionUsed: decompressionUsed,
+                illnessOrInjury: illnessOrInjury,
+                diveSupervisor: diveSupervisor,
+                accumulatedSupervisionTime: accumulatedSupervisionTime,
+                accumulatedDiveTime: accumulatedDiveTime,
                 localPdfPath: localPdfPath,
               ),
           withReferenceMapper: (p0) => p0
