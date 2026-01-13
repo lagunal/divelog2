@@ -33,13 +33,14 @@ class _SignupScreenState extends State<SignupScreen> {
 
       try {
         await context.read<AuthenticationService>().signUp(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
-        );
-        // Navigation is handled by GoRouter's redirect in main.dart
+              email: _emailController.text.trim(),
+              password: _passwordController.text.trim(),
+            );
       } catch (e) {
         setState(() {
-          _errorMessage = e.toString();
+          _errorMessage = e.toString().contains('email-already-in-use')
+              ? 'El correo electrónico ya está en uso'
+              : 'Error al registrarse: ${e.toString()}';
         });
       } finally {
         if (mounted) {
@@ -54,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign Up')),
+      appBar: AppBar(title: const Text('Registrarse')),
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
@@ -75,11 +76,14 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 TextFormField(
                   controller: _emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
+                  decoration: const InputDecoration(
+                    labelText: 'Correo Electrónico',
+                    hintText: 'ejemplo@correo.com',
+                  ),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
+                      return 'Por favor, ingrese su correo electrónico';
                     }
                     return null;
                   },
@@ -87,14 +91,16 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _passwordController,
-                  decoration: const InputDecoration(labelText: 'Password'),
+                  decoration: const InputDecoration(
+                    labelText: 'Contraseña',
+                  ),
                   obscureText: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
+                      return 'Por favor, ingrese su contraseña';
                     }
                     if (value.length < 6) {
-                      return 'Password must be at least 6 characters';
+                      return 'La contraseña debe tener al menos 6 caracteres';
                     }
                     return null;
                   },
@@ -108,11 +114,11 @@ class _SignupScreenState extends State<SignupScreen> {
                           width: 20,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
-                      : const Text('Sign Up'),
+                      : const Text('Crear Cuenta'),
                 ),
                 TextButton(
                   onPressed: () => context.go('/login'),
-                  child: const Text('Already have an account? Login'),
+                  child: const Text('¿Ya tienes cuenta? Inicia sesión'),
                 ),
               ],
             ),

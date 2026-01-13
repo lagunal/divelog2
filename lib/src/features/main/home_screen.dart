@@ -6,13 +6,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(child: Text('Home Screen')),
+      body: const Center(child: Text('Pantalla de Inicio')),
       floatingActionButton: FloatingActionButton(
+        tooltip: 'Agregar Inmersión',
         onPressed: () {
           // TODO: Navigate to DiveFormScreen
           ScaffoldMessenger.of(
             context,
-          ).showSnackBar(const SnackBar(content: Text('Add Dive clicked')));
+          ).showSnackBar(const SnackBar(content: Text('Agregar inmersión')));
         },
         child: const Icon(Icons.add),
       ),

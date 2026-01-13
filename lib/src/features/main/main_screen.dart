@@ -48,10 +48,11 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dive Log'),
+        title: const Text('Diario de Buceo'),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
+            tooltip: 'Cerrar Sesión',
             onPressed: () async {
               await AuthenticationService(FirebaseAuth.instance).signOut();
               if (context.mounted) {
@@ -68,13 +69,13 @@ class _MainScreenState extends State<MainScreen> {
             const DrawerHeader(
               decoration: BoxDecoration(color: Colors.blue),
               child: Text(
-                'Dive Log',
+                'Menú',
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text('Home'),
+              title: const Text('Inicio'),
               onTap: () {
                 context.go('/');
                 Navigator.pop(context); // Close the drawer
@@ -82,7 +83,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
             ListTile(
               leading: const Icon(Icons.scuba_diving),
-              title: const Text('Dives'),
+              title: const Text('Inmersiones'),
               onTap: () {
                 context.go('/dives');
                 Navigator.pop(context);
@@ -90,7 +91,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
             ListTile(
               leading: const Icon(Icons.bar_chart),
-              title: const Text('Statistics'),
+              title: const Text('Estadísticas'),
               onTap: () {
                 context.go('/statistics');
                 Navigator.pop(context);
@@ -98,7 +99,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: const Text('Profile'),
+              title: const Text('Perfil'),
               onTap: () {
                 context.go('/profile');
                 Navigator.pop(context);
@@ -110,13 +111,13 @@ class _MainScreenState extends State<MainScreen> {
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
           BottomNavigationBarItem(
             icon: Icon(Icons.scuba_diving),
-            label: 'Dives',
+            label: 'Inmersiones',
           ),
           BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Stats'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
         ],
         currentIndex: _calculateSelectedIndex(context),
         selectedItemColor: Colors.blue[800],

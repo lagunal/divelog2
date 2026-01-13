@@ -33,13 +33,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
       try {
         await context.read<AuthenticationService>().signIn(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
-        );
-        // Navigation is handled by GoRouter's redirect in main.dart
+              email: _emailController.text.trim(),
+              password: _passwordController.text.trim(),
+            );
       } catch (e) {
         setState(() {
-          _errorMessage = e.toString();
+          _errorMessage = e.toString().contains('user-not-found') 
+              ? 'Usuario no encontrado' 
+              : e.toString().contains('wrong-password')
+                  ? 'Contraseña incorrecta'
+                  : 'Error al iniciar sesión: ${e.toString()}';
         });
       } finally {
         if (mounted) {
@@ -54,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Iniciar Sesión')),
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
@@ -75,11 +78,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 TextFormField(
                   controller: _emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
+                  decoration: const InputDecoration(
+                    labelText: 'Correo Electrónico',
+                    hintText: 'ejemplo@correo.com',
+                  ),
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
+                      return 'Por favor, ingrese su correo electrónico';
                     }
                     return null;
                   },
@@ -87,11 +93,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _passwordController,
-                  decoration: const InputDecoration(labelText: 'Password'),
+                  decoration: const InputDecoration(
+                    labelText: 'Contraseña',
+                  ),
                   obscureText: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
+                      return 'Por favor, ingrese su contraseña';
                     }
                     return null;
                   },
@@ -105,11 +113,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 20,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
-                      : const Text('Login'),
+                      : const Text('Entrar'),
                 ),
                 TextButton(
                   onPressed: () => context.go('/signup'),
-                  child: const Text('Don\'t have an account? Sign up'),
+                  child: const Text('¿No tienes cuenta? Regístrate'),
                 ),
               ],
             ),
