@@ -28,12 +28,10 @@ void main() {
       await tester.pumpWidget(createWidgetUnderTest());
 
       expect(find.byType(TextFormField), findsNWidgets(2));
-      expect(find.text('Email'), findsOneWidget);
-      expect(find.text('Password'), findsOneWidget);
-      expect(
-        find.text('Login'),
-        findsNWidgets(2),
-      ); // AppBar title and Button text
+      expect(find.text('Correo Electrónico'), findsOneWidget);
+      expect(find.text('Contraseña'), findsOneWidget);
+      expect(find.text('Iniciar Sesión'), findsOneWidget); // AppBar title
+      expect(find.text('Entrar'), findsOneWidget); // Button text
     });
 
     testWidgets('calls signIn when form is valid and button is pressed', (
@@ -49,17 +47,16 @@ void main() {
       await tester.pumpWidget(createWidgetUnderTest());
 
       await tester.enterText(
-        find.widgetWithText(TextFormField, 'Email'),
+        find.widgetWithText(TextFormField, 'Correo Electrónico'),
         'test@example.com',
       );
       await tester.enterText(
-        find.widgetWithText(TextFormField, 'Password'),
+        find.widgetWithText(TextFormField, 'Contraseña'),
         'password123',
       );
 
-      await tester.tap(find.widgetWithText(ElevatedButton, 'Login'));
-      await tester.pump(); // Start animation
-      // await tester.pump(const Duration(seconds: 1)); // Wait for future? No, we mocked it to return immediately
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Entrar'));
+      await tester.pump();
 
       verify(
         () => mockAuthService.signIn(
@@ -80,18 +77,21 @@ void main() {
       await tester.pumpWidget(createWidgetUnderTest());
 
       await tester.enterText(
-        find.widgetWithText(TextFormField, 'Email'),
+        find.widgetWithText(TextFormField, 'Correo Electrónico'),
         'test@example.com',
       );
       await tester.enterText(
-        find.widgetWithText(TextFormField, 'Password'),
+        find.widgetWithText(TextFormField, 'Contraseña'),
         'password123',
       );
 
-      await tester.tap(find.widgetWithText(ElevatedButton, 'Login'));
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Entrar'));
       await tester.pump();
 
-      expect(find.text('Exception: Login failed'), findsOneWidget);
+      expect(
+        find.text('Error al iniciar sesión: Exception: Login failed'),
+        findsOneWidget,
+      );
     });
   });
 }

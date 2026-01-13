@@ -33,9 +33,9 @@ class _SignupScreenState extends State<SignupScreen> {
 
       try {
         await context.read<AuthenticationService>().signUp(
-              email: _emailController.text.trim(),
-              password: _passwordController.text.trim(),
-            );
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
       } catch (e) {
         setState(() {
           _errorMessage = e.toString().contains('email-already-in-use')
@@ -91,9 +91,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _passwordController,
-                  decoration: const InputDecoration(
-                    labelText: 'Contraseña',
-                  ),
+                  decoration: const InputDecoration(labelText: 'Contraseña'),
                   obscureText: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {

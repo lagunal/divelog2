@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,10 +11,7 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         tooltip: 'Agregar Inmersión',
         onPressed: () {
-          // TODO: Navigate to DiveFormScreen
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(const SnackBar(content: Text('Agregar inmersión')));
+          context.go('/dives/new');
         },
         child: const Icon(Icons.add),
       ),

@@ -28,12 +28,10 @@ void main() {
       await tester.pumpWidget(createWidgetUnderTest());
 
       expect(find.byType(TextFormField), findsNWidgets(2));
-      expect(find.text('Email'), findsOneWidget);
-      expect(find.text('Password'), findsOneWidget);
-      expect(
-        find.text('Sign Up'),
-        findsNWidgets(2),
-      ); // AppBar title and Button text
+      expect(find.text('Correo Electrónico'), findsOneWidget);
+      expect(find.text('Contraseña'), findsOneWidget);
+      expect(find.text('Registrarse'), findsOneWidget); // AppBar title
+      expect(find.text('Crear Cuenta'), findsOneWidget); // Button text
     });
 
     testWidgets('calls signUp when form is valid and button is pressed', (
@@ -49,15 +47,15 @@ void main() {
       await tester.pumpWidget(createWidgetUnderTest());
 
       await tester.enterText(
-        find.widgetWithText(TextFormField, 'Email'),
+        find.widgetWithText(TextFormField, 'Correo Electrónico'),
         'test@example.com',
       );
       await tester.enterText(
-        find.widgetWithText(TextFormField, 'Password'),
+        find.widgetWithText(TextFormField, 'Contraseña'),
         'password123',
       );
 
-      await tester.tap(find.widgetWithText(ElevatedButton, 'Sign Up'));
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Crear Cuenta'));
       await tester.pump();
 
       verify(
@@ -79,18 +77,21 @@ void main() {
       await tester.pumpWidget(createWidgetUnderTest());
 
       await tester.enterText(
-        find.widgetWithText(TextFormField, 'Email'),
+        find.widgetWithText(TextFormField, 'Correo Electrónico'),
         'test@example.com',
       );
       await tester.enterText(
-        find.widgetWithText(TextFormField, 'Password'),
+        find.widgetWithText(TextFormField, 'Contraseña'),
         'password123',
       );
 
-      await tester.tap(find.widgetWithText(ElevatedButton, 'Sign Up'));
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Crear Cuenta'));
       await tester.pump();
 
-      expect(find.text('Exception: Signup failed'), findsOneWidget);
+      expect(
+        find.text('Error al registrarse: Exception: Signup failed'),
+        findsOneWidget,
+      );
     });
   });
 }

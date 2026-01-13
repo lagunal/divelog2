@@ -2,6 +2,8 @@ import 'package:divelog2/src/features/authentication/authentication_service.dart
 import 'package:divelog2/src/features/authentication/signup_screen.dart';
 import 'package:divelog2/src/features/data/database_service.dart';
 import 'package:divelog2/src/features/data/local/app_database.dart';
+import 'package:divelog2/src/features/dives/dive_form_screen.dart';
+import 'package:divelog2/src/features/dives/dive_form_view_model.dart';
 import 'package:divelog2/src/features/main/dives_screen.dart';
 import 'package:divelog2/src/features/main/home_screen.dart';
 import 'package:divelog2/src/features/main/main_screen.dart';
@@ -77,6 +79,12 @@ class MainApp extends StatelessWidget {
             GoRoute(
               path: '/dives',
               builder: (context, state) => const DivesScreen(),
+              routes: [
+                GoRoute(
+                  path: 'new',
+                  builder: (context, state) => const DiveFormScreen(),
+                ),
+              ],
             ),
             GoRoute(
               path: '/statistics',
@@ -99,6 +107,9 @@ class MainApp extends StatelessWidget {
         Provider<AppDatabase>.value(value: db),
         ProxyProvider<AppDatabase, DatabaseService>(
           update: (_, db, _) => DatabaseService(db),
+        ),
+        ProxyProvider<DatabaseService, DiveFormViewModel>(
+          update: (_, ds, _) => DiveFormViewModel(ds),
         ),
       ],
       child: MaterialApp.router(routerConfig: router),

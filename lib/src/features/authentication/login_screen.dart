@@ -33,16 +33,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
       try {
         await context.read<AuthenticationService>().signIn(
-              email: _emailController.text.trim(),
-              password: _passwordController.text.trim(),
-            );
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
       } catch (e) {
         setState(() {
-          _errorMessage = e.toString().contains('user-not-found') 
-              ? 'Usuario no encontrado' 
+          _errorMessage = e.toString().contains('user-not-found')
+              ? 'Usuario no encontrado'
               : e.toString().contains('wrong-password')
-                  ? 'Contraseña incorrecta'
-                  : 'Error al iniciar sesión: ${e.toString()}';
+              ? 'Contraseña incorrecta'
+              : 'Error al iniciar sesión: ${e.toString()}';
         });
       } finally {
         if (mounted) {
@@ -93,9 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _passwordController,
-                  decoration: const InputDecoration(
-                    labelText: 'Contraseña',
-                  ),
+                  decoration: const InputDecoration(labelText: 'Contraseña'),
                   obscureText: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
