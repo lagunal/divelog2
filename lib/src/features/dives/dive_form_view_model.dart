@@ -1,3 +1,4 @@
+import 'dart:developer' as developer;
 import 'package:divelog2/src/features/data/database_service.dart';
 import 'package:divelog2/src/features/data/local/app_database.dart';
 import 'package:divelog2/src/features/data/local/tables/dive_sessions.dart';
@@ -44,6 +45,7 @@ class DiveFormViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
+      developer.log('Saving dive session...', name: 'DiveFormViewModel');
       final entry = DiveSessionsCompanion(
         date: Value(date),
         location: Value(location),
@@ -72,7 +74,14 @@ class DiveFormViewModel extends ChangeNotifier {
       );
 
       await _databaseService.createDiveSession(entry);
-    } catch (e) {
+      developer.log('Dive session saved successfully', name: 'DiveFormViewModel');
+    } catch (e, stackTrace) {
+      developer.log(
+        'Error saving dive session',
+        name: 'DiveFormViewModel',
+        error: e,
+        stackTrace: stackTrace,
+      );
       _error = e.toString();
       rethrow;
     } finally {

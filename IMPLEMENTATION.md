@@ -142,15 +142,15 @@ After **each** phase, the following steps must be completed:
 
 Implement the full UI and logic for the Home and Profile screens.
 
-*   [ ] **Home Screen:**
-    *   [ ] Display a welcome message ("Hola, [User Name]").
-    *   [ ] Create a `HomeViewModel` to calculate and provide summary statistics (Total Dives, Total Bottom Time).
-    *   [ ] Display these statistics in summary cards.
-    *   [ ] Ensure the FAB navigates to the Dive Form (already done).
-*   [ ] **Profile Screen:**
-    *   [ ] Display current user's name and email from `FirebaseAuth`.
-    *   [ ] Add a `ThemeMode` toggle (Light/Dark/System) and persist the preference using `shared_preferences` or a local provider.
-    *   [ ] Move the "Logout" button from the `MainScreen` drawer/appbar to this screen.
+*   [x] **Home Screen:**
+    *   [x] Display a welcome message ("Hola, [User Name]").
+    *   [x] Create a `HomeViewModel` to calculate and provide summary statistics (Total Dives, Total Bottom Time).
+    *   [x] Display these statistics in summary cards.
+    *   [x] Ensure the FAB navigates to the Dive Form (already done).
+*   [x] **Profile Screen:**
+    *   [x] Display current user's name and email from `FirebaseAuth`.
+    *   [x] Add a `ThemeMode` toggle (Light/Dark/System) and persist the preference using `shared_preferences` or a local provider.
+    *   [x] Move the "Logout" button from the `MainScreen` drawer/appbar to this screen.
 
 ---
 

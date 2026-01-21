@@ -11,6 +11,8 @@ import 'package:divelog2/src/features/main/home_screen.dart';
 import 'package:divelog2/src/features/main/main_screen.dart';
 import 'package:divelog2/src/features/main/profile_screen.dart';
 import 'package:divelog2/src/features/main/statistics_screen.dart';
+import 'package:divelog2/src/features/main/home_view_model.dart';
+import 'package:divelog2/src/features/settings/theme_view_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -130,11 +132,18 @@ class MainApp extends StatelessWidget {
         ProxyProvider<DatabaseService, DivesViewModel>(
           update: (_, ds, _) => DivesViewModel(ds),
         ),
+        ProxyProvider<DatabaseService, HomeViewModel>(
+          update: (_, ds, _) => HomeViewModel(ds),
+        ),
+        ChangeNotifierProvider(create: (_) => ThemeViewModel()),
       ],
-      child: MaterialApp.router(
-        title: 'Dive Log',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
+      child: Consumer<ThemeViewModel>(
+        builder: (context, themeViewModel, _) {
+          return MaterialApp.router(
+            title: 'Dive Log',
+            debugShowCheckedModeBanner: false,
+            themeMode: themeViewModel.themeMode,
+            theme: ThemeData(
           useMaterial3: true,
           colorScheme: colorScheme,
           textTheme: GoogleFonts.plusJakartaSansTextTheme(),
@@ -219,7 +228,9 @@ class MainApp extends StatelessWidget {
             ),
           ),
         ),
-        routerConfig: router,
+            routerConfig: router,
+          );
+        },
       ),
     );
   }
