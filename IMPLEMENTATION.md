@@ -138,7 +138,23 @@ After **each** phase, the following steps must be completed:
 
 ---
 
-## Phase 7: Search and Filtering
+## Phase 7: Home and Profile Screens
+
+Implement the full UI and logic for the Home and Profile screens.
+
+*   [ ] **Home Screen:**
+    *   [ ] Display a welcome message ("Hola, [User Name]").
+    *   [ ] Create a `HomeViewModel` to calculate and provide summary statistics (Total Dives, Total Bottom Time).
+    *   [ ] Display these statistics in summary cards.
+    *   [ ] Ensure the FAB navigates to the Dive Form (already done).
+*   [ ] **Profile Screen:**
+    *   [ ] Display current user's name and email from `FirebaseAuth`.
+    *   [ ] Add a `ThemeMode` toggle (Light/Dark/System) and persist the preference using `shared_preferences` or a local provider.
+    *   [ ] Move the "Logout" button from the `MainScreen` drawer/appbar to this screen.
+
+---
+
+## Phase 8: Search and Filtering
 
 Implement the search and filter functionality on the Dives screen.
 
@@ -150,7 +166,7 @@ Implement the search and filter functionality on the Dives screen.
 
 ---
 
-## Phase 8: PDF Generation
+## Phase 9: PDF Generation
 
 In this phase, we'll implement the PDF export feature.
 
@@ -162,7 +178,7 @@ In this phase, we'll implement the PDF export feature.
 
 ---
 
-## Phase 9: Statistics Screen
+## Phase 10: Statistics Screen
 
 Build the UI for displaying user statistics.
 
@@ -173,7 +189,7 @@ Build the UI for displaying user statistics.
 
 ---
 
-## Phase 10: Synchronization Service
+## Phase 11: Synchronization Service
 
 This is the final core feature, enabling cloud sync.
 
@@ -187,7 +203,7 @@ This is the final core feature, enabling cloud sync.
 
 ---
 
-## Phase 11: Finalization and Polish
+## Phase 12: Finalization and Polish
 
 This final phase is for documentation and final touches.
 
