@@ -30,6 +30,12 @@ After completing a task, if any TODOs were added to the code or if anything was 
 *   **Surprises:** Naming conflict with `isNotNull` between `drift` and `flutter_test` (via `matcher`). Resolved by hiding it in the import.
 *   **Deviations:** Modified `AppDatabase` to accept a `QueryExecutor` for better testability (dependency injection).
 
+### Phase 5: Dive Log Form (Create/Edit)
+
+*   **Learnings:** Using `context.pop()` from `go_router` is safer and more idiomatic than `Navigator.of(context).pop()` when using declarative routing. The `Looking up a deactivated widget's ancestor is unsafe` error was caused by interacting with a context that was being unmounted during the pop/navigation transition.
+*   **Surprises:** The "Deep Ocean" design mockup required a significant theme overhaul and custom widget styling for the Login/Signup screens.
+*   **Deviations:** Implemented a full design overhaul for the authentication screens and global theme to match user-provided mockups. All UI elements were translated to Spanish as per `DESIGN.md`.
+
 ---
 
 ## Phase 1: Project Initialization and Setup
@@ -88,11 +94,12 @@ Here, we will set up the local database which is the core of our offline-first s
 
 This phase involves building the UI for adding and editing dive sessions.
 
-*   [ ] Create the `DiveFormScreen` widget.
-*   [ ] Build the form using `SingleChildScrollView` and `Form`, grouping related fields into `Card` widgets for clarity.
-*   [ ] Use `TextFormField`, `DropdownButtonFormField`, and date/time pickers for inputs, all with Spanish labels.
-*   [ ] Create a `DiveFormViewModel` to manage the state of the form.
-*   [ ] Implement the "Save" functionality. When the user saves, the `ViewModel` will interact with the `DatabaseService` to save the dive session to the local Drift database with a `syncStatus` of `pending`.
+*   [x] Create the `DiveFormScreen` widget.
+*   [x] Build the form using `SingleChildScrollView` and `Form`, grouping related fields into `Card` widgets for clarity.
+*   [x] Use `TextFormField`, `DropdownButtonFormField`, and date/time pickers for inputs, all with Spanish labels.
+*   [x] Create a `DiveFormViewModel` to manage the state of the form.
+*   [x] Implement the "Save" functionality. When the user saves, the `ViewModel` will interact with the `DatabaseService` to save the dive session to the local Drift database with a `syncStatus` of `pending`.
+*   [x] Apply "Deep Ocean" design theme to the app and authentication screens to match mockups.
 
 ---
 

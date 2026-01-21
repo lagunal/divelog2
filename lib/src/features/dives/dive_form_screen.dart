@@ -1,5 +1,6 @@
 import 'package:divelog2/src/features/dives/dive_form_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -119,11 +120,9 @@ class _DiveFormScreenState extends State<DiveFormScreen> {
           ),
           accumulatedDiveTime: int.tryParse(_accDiveTimeController.text),
         );
+        
         if (mounted) {
-          Navigator.of(context).pop();
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Inmersión guardada correctamente')),
-          );
+          context.pop();
         }
       } catch (e) {
         if (mounted) {
