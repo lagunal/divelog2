@@ -2,8 +2,10 @@ import 'package:divelog2/src/features/authentication/authentication_service.dart
 import 'package:divelog2/src/features/authentication/signup_screen.dart';
 import 'package:divelog2/src/features/data/database_service.dart';
 import 'package:divelog2/src/features/data/local/app_database.dart';
+import 'package:divelog2/src/features/dives/dive_detail_screen.dart';
 import 'package:divelog2/src/features/dives/dive_form_screen.dart';
 import 'package:divelog2/src/features/dives/dive_form_view_model.dart';
+import 'package:divelog2/src/features/dives/dives_view_model.dart';
 import 'package:divelog2/src/features/main/dives_screen.dart';
 import 'package:divelog2/src/features/main/home_screen.dart';
 import 'package:divelog2/src/features/main/main_screen.dart';
@@ -15,12 +17,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:divelog2/src/features/authentication/login_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
 // This is a global function that can be overridden for testing
 Future<void> Function()? initializeFirebaseAndRunApp = () async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await initializeDateFormatting('es_ES', null);
 
   final database = AppDatabase();
 
@@ -40,9 +44,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final auth = firebaseAuth ?? FirebaseAuth.instance;
-    final db =
-        database ??
-        AppDatabase(); // Fallback if not provided, though it should be
+    final db = database ?? AppDatabase();
 
     final router = GoRouter(
       initialLocation: '/',
@@ -85,6 +87,13 @@ class MainApp extends StatelessWidget {
                   path: 'new',
                   builder: (context, state) => const DiveFormScreen(),
                 ),
+                GoRoute(
+                  path: 'detail',
+                  builder: (context, state) {
+                    final session = state.extra as DiveSession;
+                    return DiveDetailScreen(session: session);
+                  },
+                ),
               ],
             ),
             GoRoute(
@@ -118,6 +127,9 @@ class MainApp extends StatelessWidget {
         ProxyProvider<DatabaseService, DiveFormViewModel>(
           update: (_, ds, _) => DiveFormViewModel(ds),
         ),
+        ProxyProvider<DatabaseService, DivesViewModel>(
+          update: (_, ds, _) => DivesViewModel(ds),
+        ),
       ],
       child: MaterialApp.router(
         title: 'Dive Log',
@@ -141,7 +153,8 @@ class MainApp extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: Color(0xFF0077BE), width: 2),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
@@ -186,7 +199,8 @@ class MainApp extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               borderSide: const BorderSide(color: Color(0xFF0077BE), width: 2),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(

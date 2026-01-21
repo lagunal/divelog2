@@ -36,6 +36,12 @@ After completing a task, if any TODOs were added to the code or if anything was 
 *   **Surprises:** The "Deep Ocean" design mockup required a significant theme overhaul and custom widget styling for the Login/Signup screens.
 *   **Deviations:** Implemented a full design overhaul for the authentication screens and global theme to match user-provided mockups. All UI elements were translated to Spanish as per `DESIGN.md`.
 
+### Phase 6: Displaying Dives (List and Detail)
+
+*   **Learnings:** `DateFormat` requires explicit initialization via `initializeDateFormatting` for non-default locales (like Spanish).
+*   **Surprises:** Passing objects via `GoRouter`'s `extra` parameter works well for offline-first apps where we already have the full object from the local DB.
+*   **Deviations:** None.
+
 ---
 
 ## Phase 1: Project Initialization and Setup
@@ -107,11 +113,11 @@ This phase involves building the UI for adding and editing dive sessions.
 
 This phase focuses on showing the user their logged dives.
 
-*   [ ] Create a `DivesViewModel` that fetches dive sessions from the `DatabaseService`.
-*   [ ] Replace the `DivesScreen` placeholder with a `ListView.builder` that displays the list of dives.
-*   [ ] Create a custom `DiveSessionCard` widget to display summary information for each dive in the list.
-*   [ ] Implement navigation from a `DiveSessionCard` to a `DiveDetailScreen`.
-*   [ ] Add an "Edit" button to the `DiveDetailScreen`'s `AppBar` that navigates to the `DiveFormScreen` with the selected dive's data pre-filled.
+*   [x] Create a `DivesViewModel` that fetches dive sessions from the `DatabaseService`.
+*   [x] Replace the `DivesScreen` placeholder with a `ListView.builder` that displays the list of dives.
+*   [x] Create a custom `DiveSessionCard` widget to display summary information for each dive in the list.
+*   [x] Implement navigation from a `DiveSessionCard` to a `DiveDetailScreen`.
+*   [x] Add an "Edit" button to the `DiveDetailScreen`'s `AppBar` that navigates to the `DiveFormScreen` with the selected dive's data pre-filled.
 
 ---
 
