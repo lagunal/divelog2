@@ -126,14 +126,20 @@ class MainApp extends StatelessWidget {
         ProxyProvider<AppDatabase, DatabaseService>(
           update: (_, db, _) => DatabaseService(db),
         ),
-        ProxyProvider<DatabaseService, DiveFormViewModel>(
-          update: (_, ds, _) => DiveFormViewModel(ds),
+        ChangeNotifierProxyProvider<DatabaseService, DiveFormViewModel>(
+          create: (context) => DiveFormViewModel(
+              Provider.of<DatabaseService>(context, listen: false)),
+          update: (_, db, previous) => previous ?? DiveFormViewModel(db),
         ),
-        ProxyProvider<DatabaseService, DivesViewModel>(
-          update: (_, ds, _) => DivesViewModel(ds),
+        ChangeNotifierProxyProvider<DatabaseService, DivesViewModel>(
+          create: (context) => DivesViewModel(
+              Provider.of<DatabaseService>(context, listen: false)),
+          update: (_, db, previous) => previous ?? DivesViewModel(db),
         ),
-        ProxyProvider<DatabaseService, HomeViewModel>(
-          update: (_, ds, _) => HomeViewModel(ds),
+        ChangeNotifierProxyProvider<DatabaseService, HomeViewModel>(
+          create: (context) => HomeViewModel(
+              Provider.of<DatabaseService>(context, listen: false)),
+          update: (_, db, previous) => previous ?? HomeViewModel(db),
         ),
         ChangeNotifierProvider(create: (_) => ThemeViewModel()),
       ],
