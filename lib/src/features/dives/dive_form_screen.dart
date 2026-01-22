@@ -1,3 +1,4 @@
+import 'package:divelog2/src/features/data/local/app_database.dart';
 import 'package:divelog2/src/features/dives/dive_form_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -5,7 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class DiveFormScreen extends StatefulWidget {
-  const DiveFormScreen({super.key});
+  final DiveSession? session;
+  const DiveFormScreen({super.key, this.session});
 
   @override
   State<DiveFormScreen> createState() => _DiveFormScreenState();
@@ -45,6 +47,38 @@ class _DiveFormScreenState extends State<DiveFormScreen> {
     'Altura Geográfica',
     'Saturación',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.session != null) {
+      final s = widget.session!;
+      _selectedDate = s.date;
+      _locationController.text = s.location;
+      _clientController.text = s.client ?? '';
+      _operatorController.text = s.diveOperator ?? '';
+      _operatorAddressController.text = s.operatorAddress ?? '';
+      _diversNamesController.text = s.diversNames ?? '';
+      _maxDepthController.text = s.maxDepth.toString();
+      _bottomTimeController.text = s.bottomTime.toString();
+      _surfaceIntervalController.text = s.surfaceInterval?.toString() ?? '';
+      _totalDiveTimeController.text = s.totalDiveTime?.toString() ?? '';
+      _gasMixtureController.text = s.gasMixture ?? '';
+      _workDescriptionController.text = s.workDescription ?? '';
+      _decompressionUsedController.text = s.decompressionUsed ?? '';
+      _illnessOrInjuryController.text = s.illnessOrInjury ?? '';
+      _diveSupervisorController.text = s.diveSupervisor ?? '';
+      _accSupervisionController.text = s.accumulatedSupervisionTime?.toString() ?? '';
+      _accDiveTimeController.text = s.accumulatedDiveTime?.toString() ?? '';
+      
+      _selectedDiveType = s.diveType;
+      
+      if (s.entryTime != null) _entryTime = TimeOfDay.fromDateTime(s.entryTime!);
+      if (s.exitTime != null) _exitTime = TimeOfDay.fromDateTime(s.exitTime!);
+      if (s.decompressionStart != null) _decoStart = TimeOfDay.fromDateTime(s.decompressionStart!);
+      if (s.decompressionComplete != null) _decoComplete = TimeOfDay.fromDateTime(s.decompressionComplete!);
+    }
+  }
 
   @override
   void dispose() {
@@ -95,6 +129,8 @@ class _DiveFormScreenState extends State<DiveFormScreen> {
     if (_formKey.currentState!.validate()) {
       try {
         await context.read<DiveFormViewModel>().saveDiveSession(
+          id: widget.session?.id,
+          firestoreId: widget.session?.firestoreId,
           date: _selectedDate,
           location: _locationController.text,
           client: _clientController.text,

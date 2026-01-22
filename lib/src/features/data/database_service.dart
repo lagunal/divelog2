@@ -43,6 +43,13 @@ class DatabaseService {
     return result;
   }
 
+  Future<bool> updateDiveSessionFromCompanion(DiveSessionsCompanion session) async {
+    developer.log('Updating dive session from companion', name: 'DatabaseService');
+    final result = await _db.update(_db.diveSessions).replace(session);
+    developer.log('Dive session update result: $result', name: 'DatabaseService');
+    return result;
+  }
+
   // Delete
   Future<int> deleteDiveSession(int id) async {
     developer.log('Deleting dive session with ID: $id', name: 'DatabaseService');

@@ -17,6 +17,8 @@ class DiveFormViewModel extends ChangeNotifier {
   String? get error => _error;
 
   Future<void> saveDiveSession({
+    int? id, // Optional ID for updates
+    String? firestoreId, // Preserve firestore ID if updating
     required DateTime date,
     required String location,
     String? client,
@@ -47,6 +49,8 @@ class DiveFormViewModel extends ChangeNotifier {
     try {
       developer.log('Saving dive session...', name: 'DiveFormViewModel');
       final entry = DiveSessionsCompanion(
+        id: id != null ? Value(id) : const Value.absent(),
+        firestoreId: firestoreId != null ? Value(firestoreId) : const Value.absent(),
         date: Value(date),
         location: Value(location),
         client: Value(client),
@@ -73,7 +77,11 @@ class DiveFormViewModel extends ChangeNotifier {
         updatedAt: Value(DateTime.now()),
       );
 
-      await _databaseService.createDiveSession(entry);
+      if (id != null) {
+        await _databaseService.updateDiveSessionFromCompanion(entry);
+      } else {
+        await _databaseService.createDiveSession(entry);
+      }
       developer.log('Dive session saved successfully', name: 'DiveFormViewModel');
     } catch (e, stackTrace) {
       developer.log(

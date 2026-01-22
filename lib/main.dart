@@ -87,7 +87,10 @@ class MainApp extends StatelessWidget {
               routes: [
                 GoRoute(
                   path: 'new',
-                  builder: (context, state) => const DiveFormScreen(),
+                  builder: (context, state) {
+                    final session = state.extra as DiveSession?;
+                    return DiveFormScreen(session: session);
+                  },
                 ),
                 GoRoute(
                   path: 'detail',
