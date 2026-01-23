@@ -58,9 +58,15 @@ class _DivesScreenState extends State<DivesScreen> {
                       children: [
                         CircleAvatar(
                           radius: 22,
-                          backgroundColor: const Color(0xFFE0CBA8), // Skin tone-ish placeholder
+                          backgroundColor:
+                              const Color(0xFFE0CBA8), // Skin tone-ish placeholder
                           child: Text(
-                            user?.displayName?.substring(0, 1).toUpperCase() ?? 'U',
+                            (user?.displayName?.isNotEmpty == true
+                                    ? user!.displayName!.substring(0, 1)
+                                    : user?.email?.isNotEmpty == true
+                                        ? user!.email!.substring(0, 1)
+                                        : 'U')
+                                .toUpperCase(),
                             style: const TextStyle(
                               color: Color(0xFF5D4037),
                               fontWeight: FontWeight.bold,
