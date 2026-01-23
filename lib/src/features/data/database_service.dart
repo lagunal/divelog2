@@ -80,6 +80,13 @@ class DatabaseService {
     };
   }
 
+  Future<DiveSession?> getLastDiveSession() async {
+    return (_db.select(_db.diveSessions)
+          ..orderBy([(t) => OrderingTerm(expression: t.date, mode: OrderingMode.desc)])
+          ..limit(1))
+        .getSingleOrNull();
+  }
+
   // --- Sync Related Methods ---
 
   // Get Pending Sessions

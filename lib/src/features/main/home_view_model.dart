@@ -1,4 +1,5 @@
 import 'package:divelog2/src/features/data/database_service.dart';
+import 'package:divelog2/src/features/data/local/app_database.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewModel extends ChangeNotifier {
@@ -11,6 +12,9 @@ class HomeViewModel extends ChangeNotifier {
 
   int _totalBottomTime = 0;
   int get totalBottomTime => _totalBottomTime;
+  
+  DiveSession? _lastDive;
+  DiveSession? get lastDive => _lastDive;
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
@@ -23,6 +27,8 @@ class HomeViewModel extends ChangeNotifier {
       final stats = await _databaseService.getDiveStats();
       _totalDives = stats['totalDives'] as int;
       _totalBottomTime = stats['totalBottomTime'] as int;
+      
+      _lastDive = await _databaseService.getLastDiveSession();
     } catch (e) {
       debugPrint('Error loading stats: $e');
     } finally {
